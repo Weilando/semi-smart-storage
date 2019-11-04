@@ -132,5 +132,5 @@ TODO
   - [ ] Draft of software architecture
 - [x] Init git-repository
 - [x] Setup raspberry pi with needed packages
-- [ ] Setup database
+- [x] Setup database
 - [x] Create and setup React App
