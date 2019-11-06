@@ -21,7 +21,7 @@
       break;
     case "ALL_ITEMS_IN_STORAGE":
       $sql =<<<EOF
-        SELECT Item.name, Unit.name as unit, Item.quantity from Item, isIn, Storage, Unit WHERE Item.id==isIn.itemId AND isIn.storageId==Storage.id AND Item.unitId==Unit.id AND isIn.storageID==$option;
+        SELECT Item.name, Unit.name as unit, isIn.quantity from Item, isIn, Storage, Unit WHERE Item.id==isIn.itemId AND isIn.storageId==Storage.id AND Item.unitId==Unit.id AND isIn.storageID==$option;
       EOF;
       break;
     case "ALL_UNITS":
