@@ -1,6 +1,7 @@
 # SemiSmartStorage
 This little React App helps you to keep track of your fridges and storages.
-Further information can be found in the [documentation](Documentation.md).
+Further information can be found in the [documentation](docs/Documentation.md).
+The project's progress can be seen in the [roadmap](docs/Roadmap.md).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -32,4 +33,4 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-Further information has been moved to [React-information.md].
+Further information has been moved to [docs/React-information.md].

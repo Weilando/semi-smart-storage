@@ -123,14 +123,3 @@ Users can simply access the application by visiting a local URI and using the ap
 
 ### Software Architecture
 TODO
-
-## Roadmap
-- [x] Concrete description of main idea
-- [x] Draft of concept
-- [ ] Draft of project structure
-  - [x] Concrete list of used technologies
-  - [ ] Draft of software architecture
-- [x] Init git-repository
-- [x] Setup raspberry pi with needed packages
-- [x] Setup database
-- [x] Create and setup React App
