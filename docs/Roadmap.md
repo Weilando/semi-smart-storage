@@ -15,8 +15,46 @@
 - [ ] Create end point offering an interface to add new entries to the database
 - [ ] Create end point offering an interface to update entries in the database
 
-## Front-end
-- [ ] Create main view showing a storage-selector on the left and the selected storage's entries on the right
-- [ ] Create a storage-selector component
-- [ ] Create a storage-view component
-- [ ] Create a settings-view component
+## Basic styled Front-end
+- [x] Create a stylesheet for the following views
+- [x] Create a header view
+- [x] Create main view showing a storage-selector on the left and the selected storage's entries on the right
+- [x] Create a StorageSelector component
+- [x] Create a StorageView component
+- [ ] Create a SettingsView component
+
+## StorageSelector component
+- [ ] Show existing storages
+  - [ ] Fetch existing storages via Redux
+  - [ ] Create a component based on list items showing the fetched storages
+  - [ ] Add on-click recognition to enable toggling StorageView's content
+  - [ ] Extend stylesheet to show hover and highlight actually chosen storage
+- [ ] Enable adding new storages
+  - [ ] Add component offering a textfield (for the name) and a button (for adding the new storage)
+  - [ ] Extend API to create new storages inside the database
+  - [ ] Use button to trigger API-request to add the new storage and clear the textfield afterwards
+- [ ] Enable editing and deleting storages
+  - [ ] Add edit-button
+  - [ ] Extend API to alter and delete storages inside the database
+  - [ ] Trigger API-requests to alter or delete storages and update the view afterwards
+
+## StorageView component
+- [ ] Show existing items
+  - [ ] Fetch all items in the storage selected in the StorageSelector component
+  - [ ] Create a component based on list items showing the fetched items
+- [ ] Enable adding new storages
+  - [ ] Add component offering two dropdown-menus (for name and unit), a textfield (for entity) and a button (for adding the new item)
+  - [ ] Extend API to create new items inside the database (related to the chosen storage)
+  - [ ] Use button to trigger API-request to add the new item and clear the input-fields afterwards
+- [ ] Enable editing and deleting items
+  - [ ] Extend view-cells as shown in the documentation
+  - [ ] Extend API to alter and delete items inside the database
+  - [ ] Trigger corresponding API-requests to alter or delete items and update the view afterwards
+
+## SettingsView component
+- [ ] Add settings-button to header (top right corner?)
+- [ ] Show modal if active
+- [ ] Option for editing available item names
+- [ ] Option for editing available units
+- [ ] Maybe several themes?
+- [ ] Maybe reset button (restore factory settings)?
