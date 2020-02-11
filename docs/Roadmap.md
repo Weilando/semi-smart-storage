@@ -25,7 +25,7 @@
 
 ## StorageSelector component
 - [ ] Show existing storages
-  - [ ] Fetch existing storages via Redux
+  - [x] Fetch existing storages via Axios
   - [ ] Create a component based on list items showing the fetched storages
   - [ ] Add on-click recognition to enable toggling StorageView's content
   - [ ] Extend stylesheet to show hover and highlight actually chosen storage

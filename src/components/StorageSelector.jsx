@@ -1,9 +1,20 @@
 import React from 'react';
 import './Views.css';
+import { getAllStorages } from '../services/StorageService';
 
 class StorageSelector extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      storageList: [],
+    }
+  }
+
+  componentDidMount() {
+    getAllStorages().then(storages => {
+      this.setState({storageList: storages})
+    });
   }
 
   render() {

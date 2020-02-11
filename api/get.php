@@ -1,4 +1,13 @@
 <?php
+  // Allow every kind of request, as curent scope is a local network.
+  // TODO:  Reduce privileges later!
+  header('Access-Control-Allow-Origin: *');
+  header('Access-Control-Allow-Methods: GET, POST, OPTIONS, DELETE, PUT');
+  header('Access-Control-Allow-Headers: Host, Connection, Accept, Authorization, Content-Type, X-Requested-With, User-Agent, Referer, Methods');
+  if($_SERVER["REQUEST_METHOD"]== "OPTIONS"){
+    echo "";die;
+  }
+
   $db = new SQLite3('../databases/db_3S.db');
   if(!$db) {
     echo $db->lastErrorMsg();
