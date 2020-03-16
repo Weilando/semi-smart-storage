@@ -1,5 +1,6 @@
 import React from 'react';
-import './Views.css';
+import '../styles/StorageSelector.css';
+import StorageSelectorItem from './StorageSelectorItem';
 import { getAllStorages } from '../services/StorageService';
 
 class StorageSelector extends React.Component {
@@ -7,7 +8,7 @@ class StorageSelector extends React.Component {
     super(props);
 
     this.state = {
-      storageList: [],
+      storageList: [{id: "0", name: "Fridge"}, {id: "1", name: "Basement"}, {id: "2", name: "Garage"}],
     }
   }
 
@@ -17,10 +18,25 @@ class StorageSelector extends React.Component {
     });
   }
 
+  getStorageList() {
+    const keys = [...Array(this.state.storageList.length).keys()]; // Array with keys from 0 to entries.length
+
+    return keys.map((currKey) =>
+      <StorageSelectorItem
+        sId={this.state.storageList[currKey].id}
+        sName={this.state.storageList[currKey].name}
+      />
+    );
+  }
+
   render() {
+    let storageList = this.getStorageList();
+
     return (
       <div className="StorageSelector">
-        <p>StorageSelector</p>
+        <ul className="StorageSelector">
+          {storageList}
+        </ul>
       </div>
     );
   }

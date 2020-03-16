@@ -1,0 +1,24 @@
+div.StorageSelector {
+  display: inline-block;
+  width: 23%;
+  height: 98%;
+  border: 1px solid orange;
+  margin-right: 0.5%;
+  margin-left: 0;
+  padding-left: 0.2%;
+  padding-right: 0.2%;
+}
+
+ul.StorageSelector {
+  list-style-type: none;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+li.StorageSelector {
+  min-height: 2em;
+  background-color: lightblue;
+  margin: 0.2em;
+  padding: 0.2em;
+}

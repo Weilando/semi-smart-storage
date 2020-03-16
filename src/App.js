@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import MainView from './components/MainView';
+import Body from './components/Body';
 import Header from './components/Header';
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <MainView/>
+      <Body/>
     </div>
   );
 }

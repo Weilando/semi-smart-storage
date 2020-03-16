@@ -1,0 +1,9 @@
+div.Header {
+  background-color: grey;
+  height: 5vh;
+  width: 100vw;
+  min-height: 10px;
+  min-width: 100px;
+  padding: 1em;
+  margin: 0;
+}

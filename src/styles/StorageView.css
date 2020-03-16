@@ -1,0 +1,11 @@
+div.StorageView {
+  display: inline-block;
+  vertical-align: top;
+  height: 98%;
+  width: 74%;
+  border: 1px solid orange;
+  overflow-x: scroll;
+  margin : 0;
+  padding-left: 0.2%;
+  padding-right: 0.2%;
+}

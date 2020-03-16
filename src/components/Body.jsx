@@ -1,16 +1,12 @@
 import React from 'react';
 import StorageView from './StorageView';
 import StorageSelector from './StorageSelector';
-import './Views.css';
+import '../styles/Body.css';
 
-class MainView extends React.Component {
-  constructor() {
-    super();
-  }
-
+class Body extends React.Component {
   render() {
     return (
-      <div className="MainView">
+      <div className="Body">
         <StorageSelector/>
         <StorageView/>
       </div>
@@ -18,4 +14,4 @@ class MainView extends React.Component {
   }
 }
 
-export default MainView;
+export default Body;

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Views.css';
+import '../styles/StorageView.css';
 
 class StorageView extends React.Component {
   constructor() {
