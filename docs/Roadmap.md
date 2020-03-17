@@ -26,17 +26,17 @@
 ## StorageSelector component
 - [ ] Show existing storages
   - [x] Fetch existing storages via Axios
-  - [ ] Create a component based on list items showing the fetched storages
-  - [ ] Add on-click recognition to enable toggling StorageView's content
+  - [x] Create a component based on list items showing the fetched storages
+  - [x] Add on-click recognition to enable toggling StorageView's content
   - [ ] Extend stylesheet to show hover and highlight actually chosen storage
 - [ ] Enable adding new storages
-  - [ ] Add component offering a textfield (for the name) and a button (for adding the new storage)
+  - [x] Add component offering a textfield (for the name) and a button (for adding the new storage)
   - [ ] Extend API to create new storages inside the database
-  - [ ] Use button to trigger API-request to add the new storage and clear the textfield afterwards
+  - [x] Use button to trigger API-request to add the new storage and clear the textfield afterwards
 - [ ] Enable editing and deleting storages
-  - [ ] Add edit-button
+  - [x] Add modal for editing
   - [ ] Extend API to alter and delete storages inside the database
-  - [ ] Trigger API-requests to alter or delete storages and update the view afterwards
+  - [x] Trigger API-requests to alter or delete storages and update the view afterwards
 
 ## StorageView component
 - [ ] Show existing items
