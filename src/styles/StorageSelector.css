@@ -23,6 +23,10 @@ li.StorageSelector {
   padding: 0.2em;
 }
 
+li.StorageSelector:hover {
+  background-color: lightgreen;
+}
+
 input[type="text"].StorageSelector {
   background-color: transparent;
   width: 70%;
