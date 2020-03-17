@@ -33,7 +33,17 @@ input[type="text"].StorageSelector {
   border: none;
 }
 
-input[type="submit"].entry {
+input[type="submit"].StorageSelector {
   float: right;
   margin-right: 0;
+}
+
+div.StorageSelectorItem {
+  width: 90%;
+  float: left;
+}
+
+button.StorageSelectorItem {
+  width: 10%;
+  border-radius: 100%;
 }

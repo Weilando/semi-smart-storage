@@ -4,13 +4,20 @@ import '../styles/StorageSelector.css';
 
 function StorageSelectorItem(props) {
   StorageSelectorItem.proptTypes = {
+    sId: PropTypes.number.isRequired,
     sName: PropTypes.string.isRequired,
-    sId: PropTypes.number.isRequired
+    showAction: PropTypes.func.isRequired,
+    editAction: PropTypes.func.isRequired,
   }
-  
+
   return (
-    <li className="StorageSelector" onClick={function() { alert('click '.concat(props.sId)); }}>
-      {props.sName}
+    <li className="StorageSelector">
+      <div className="StorageSelectorItem" onClick={props.showAction}>
+        {props.sName}
+      </div>
+      <button className="StorageSelectorItem" onClick={() => props.editAction(Number(props.sId), props.sName)}>
+        i
+      </button>
     </li>
   );
 }
