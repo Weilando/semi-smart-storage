@@ -7,7 +7,7 @@ class StorageSelectorNewItem extends React.Component {
     super(props);
 
     this.state = {
-      content: '',
+      name: '',
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,13 +19,13 @@ class StorageSelectorNewItem extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({content: event.target.value});
+    this.setState({name: event.target.value});
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.addStorage(this.state.content);
-    this.setState({content: ''});
+    this.props.addStorage(this.state.name);
+    this.setState({name: ''});
   }
 
   render() {
@@ -35,14 +35,14 @@ class StorageSelectorNewItem extends React.Component {
           <input
             type="text"
             className="StorageSelector"
-            value={this.state.content}
+            value={this.state.name}
             onChange={this.handleChange}
           />
           <input
             type="submit"
             className="StorageSelector"
             value="Add"
-            disabled={this.state.content === ''}
+            disabled={this.state.name === ''}
           />
         </form>
       </li>

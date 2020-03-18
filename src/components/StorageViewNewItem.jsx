@@ -14,7 +14,6 @@ class StorageViewNewItem extends React.Component {
     this.handleItemChange = this.handleItemChange.bind(this);
     this.handleUnitChange = this.handleUnitChange.bind(this);
     this.handleQuantityChange = this.handleQuantityChange.bind(this);
-    this.handleQuantityChange = this.handleQuantityChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -49,7 +48,7 @@ class StorageViewNewItem extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.addAction(this.state.item, this.state.unit, this.state.quantity);
-    this.setState({item: 0, unit: 0, quantity: ''});
+    this.setState({item: 0, unit: 0, quantity: 0});
   }
 
   // rendering

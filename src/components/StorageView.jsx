@@ -59,8 +59,8 @@ class StorageView extends React.Component {
         iName={this.state.storageContent[currKey].name}
         iUnit={this.state.storageContent[currKey].unit}
         iQuantity={this.state.storageContent[currKey].quantity}
-        incrementAction={this.incrementQuantityForItem}
         decrementAction={this.decrementQuantityForItem}
+        incrementAction={this.incrementQuantityForItem}
         editAction={this.editItem}
         removeAction={this.removeItem}
       />
@@ -74,9 +74,11 @@ class StorageView extends React.Component {
       <div className="StorageView">
         <table className="StorageView">
           <StorageViewHead/>
+
           <tbody>
             {content}
           </tbody>
+          
           <StorageViewNewItem
             itemList={this.state.itemList}
             unitList={this.state.unitList}
