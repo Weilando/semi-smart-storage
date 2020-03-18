@@ -12,10 +12,10 @@ function StorageSelectorItem(props) {
 
   return (
     <li className="StorageSelector">
-      <div className="StorageSelectorItem" onClick={props.showAction}>
-        {props.sName}
-      </div>
-      <button className="StorageSelectorItem" onClick={() => props.editAction(Number(props.sId), props.sName)}>
+      <button className="Block" onClick={props.showAction}>
+        <p>{props.sName}</p>
+      </button>
+      <button className="Round" onClick={() => props.editAction(Number(props.sId), props.sName)}>
         i
       </button>
     </li>

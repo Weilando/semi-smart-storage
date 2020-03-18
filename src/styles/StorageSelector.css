@@ -38,12 +38,25 @@ input[type="submit"].StorageSelector {
   margin-right: 0;
 }
 
-div.StorageSelectorItem {
-  width: 90%;
+button {
+  height: 100%;
+  border: none;
+  cursor: pointer;
   float: left;
+  padding: 0.2em;
 }
 
-button.StorageSelectorItem {
-  width: 10%;
-  border-radius: 100%;
+button.Block {
+  display: block;
+  min-width: 80%;
+  float: left;
+  background-color: transparent;
+  text-align: left;
+}
+
+button.Round {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  float: right;
 }

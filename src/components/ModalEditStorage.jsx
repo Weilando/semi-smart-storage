@@ -17,22 +17,29 @@ function ModalEditStorage(props) {
     <div className={'modal '.concat(props.show ? 'show' : 'hide')}>
       <div className="modal-main">
         <span className="close" onClick={props.closeAction}>&times;</span>
-        <p>Change things for {props.sName}.</p>
-        <form onSubmit={props.updateAction}>
+        <h1>Settings for storage "{props.sName}".</h1>
+
+        <h2>Update name</h2>
+        <form onSubmit={props.updateAction} className="Modal">
           <input
             type="text"
-            className="StorageSelector"
+            className="Modal"
             value={props.buffer}
             onChange={props.changeAction}
           />
+          <br/>
           <input
             type="submit"
-            className="StorageSelector"
+            className="Modal"
             value="Update name"
             disabled={props.sName === ''}
           />
         </form>
-        <button onClick={props.deleteAction}>
+
+        <h2>Delete storage</h2>
+        <p>To delete the storage and all its content, click the button below.
+        Items and units are not deleted.</p>
+        <button onClick={props.deleteAction} className="Modal">
           Delete Storage
         </button>
       </div>
