@@ -43,7 +43,7 @@
   - [ ] Fetch all items in the storage selected in the StorageSelector component
   - [x] Create a component based on list items showing the fetched items
 - [ ] Enable adding new storages
-  - [ ] Add component offering two dropdown-menus (for name and unit), a textfield (for entity) and a button (for adding the new item)
+  - [x] Add component offering two dropdown-menus (for name and unit), a textfield (for entity) and a button (for adding the new item)
   - [ ] Extend API to create new items inside the database (related to the chosen storage)
   - [ ] Use button to trigger API-request to add the new item and clear the input-fields afterwards
 - [ ] Enable editing and deleting items
