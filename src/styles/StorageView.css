@@ -9,3 +9,12 @@ div.StorageView {
   padding-left: 0.2%;
   padding-right: 0.2%;
 }
+
+table.StorageView {
+  border: 1px solid black;
+  width: 100%;
+}
+
+button.StorageView {
+  margin: 0.2em;
+}
