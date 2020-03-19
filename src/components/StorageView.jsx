@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import StorageViewHead from './StorageViewHead';
 import StorageViewItem from './StorageViewItem';
 import StorageViewNewItem from './StorageViewNewItem';
@@ -8,14 +9,6 @@ class StorageView extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      storageId: 0,
-      storageName: 'Fridge',
-      storageContent: [{id: 0, name: "Milk", unit: "1L", quantity: 3}, {id: 1, name: "Coke", unit: "0.33L", quantity: 5}, {id: 2, name: "Apple juice", unit: "0.5L", quantity: 2}, {id: 4, name: "Craft Beer", unit: "0.33L", quantity: 6}],
-      unitList: [{id: 0, name: "0.33L"}, {id: 1, name: "0.5L"}, {id: 2, name: "1.0L"}],
-      itemList: [{id: 0, name: "Sparkling water"}, {id: 1, name: "Apple juice"}, {id: 2, name: "Craft beer"}, {id: 3, name: "Milk"}, {id: 5, name: "Coke"}]
-    }
-
     this.addItem = this.addItem.bind(this);
     this.decrementQuantityForItem = this.decrementQuantityForItem.bind(this);
     this.incrementQuantityForItem = this.incrementQuantityForItem.bind(this);
@@ -23,42 +16,65 @@ class StorageView extends React.Component {
     this.removeItem = this.removeItem.bind(this);
   }
 
+  static propTypes = {
+    storage: PropTypes.shape(
+      {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
+    ).isRequired,
+    storageContent: PropTypes.arrayOf(
+      PropTypes.shape(
+        {id: PropTypes.number.isRequired,
+          name: PropTypes.string.isRequired,
+          quantity: PropTypes.number.isRequired
+        }
+      )
+    ).isRequired,
+    itemList: PropTypes.arrayOf(
+      PropTypes.shape(
+        {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
+      )
+    ).isRequired,
+    unitList: PropTypes.arrayOf(
+      PropTypes.shape(
+        {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
+      )
+    ).isRequired,
+  }
 
   // edit-modal handling
   editItem(itemId) {
-    alert('Edit item #'.concat(itemId, ' from storage #', this.state.storageId, ' inside a modal.'));
+    alert('Edit item #'.concat(itemId, ' from storage #', this.props.storage.id, ' inside a modal.'));
   }
 
 
   // POST api-operations
   addItem(itemId, unitId, quantity) {
-    alert('Add item #'.concat(itemId, ' with quantity ', quantity, ' and unit #', unitId, ' to storage #', this.state.storageId, '.'));
+    alert('Add item #'.concat(itemId, ' with quantity ', quantity, ' and unit #', unitId, ' to storage #', this.props.storage.id, '.'));
   }
 
   decrementQuantityForItem(itemId) {
-    alert('Decrement quantity for item #'.concat(itemId, ' from storage #', this.state.storageId, '.'));
+    alert('Decrement quantity for item #'.concat(itemId, ' from storage #', this.props.storage.id, '.'));
   }
 
   incrementQuantityForItem(itemId) {
-    alert('Increment quantity for item #'.concat(itemId, ' from storage #', this.state.storageId, '.'));
+    alert('Increment quantity for item #'.concat(itemId, ' from storage #', this.props.storage.id, '.'));
   }
 
   removeItem(itemId) {
-    alert('Remove item #'.concat(itemId, ' from storage #', this.state.storageId, '.'));
+    alert('Remove item #'.concat(itemId, ' from storage #', this.props.storage.id, '.'));
   }
 
 
   // rendering
   unpackStorageContent() {
-    const keys = [...Array(this.state.storageContent.length).keys()]; // Array with keys from 0 to entries.length
+    const keys = [...Array(this.props.storageContent.length).keys()]; // Array with keys from 0 to entries.length
 
     return keys.map((currKey) =>
       <StorageViewItem
-        key={this.state.storageContent[currKey].id}
-        iId={this.state.storageContent[currKey].id}
-        iName={this.state.storageContent[currKey].name}
-        iUnit={this.state.storageContent[currKey].unit}
-        iQuantity={this.state.storageContent[currKey].quantity}
+        key={this.props.storageContent[currKey].id}
+        iId={this.props.storageContent[currKey].id}
+        iName={this.props.storageContent[currKey].name}
+        iUnit={this.props.storageContent[currKey].unit}
+        iQuantity={this.props.storageContent[currKey].quantity}
         decrementAction={this.decrementQuantityForItem}
         incrementAction={this.incrementQuantityForItem}
         editAction={this.editItem}
@@ -78,10 +94,10 @@ class StorageView extends React.Component {
           <tbody>
             {content}
           </tbody>
-          
+
           <StorageViewNewItem
-            itemList={this.state.itemList}
-            unitList={this.state.unitList}
+            itemList={this.props.itemList}
+            unitList={this.props.unitList}
             addAction={this.addItem}
           />
         </table>

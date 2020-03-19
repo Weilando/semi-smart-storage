@@ -4,7 +4,7 @@ import '../styles/Header.css';
 function Header() {
   return (
     <div className="Header">
-      <p>Header</p>
+      <h1>SemiSmartStorage</h1>
     </div>
   );
 }

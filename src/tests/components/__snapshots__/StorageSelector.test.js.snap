@@ -1,5 +1,145 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`snapshot tests for StorageSelector component should render initial StorageSelector component correctly 1`] = `
+<div
+  className="StorageSelector"
+>
+  <ul
+    className="StorageSelector"
+  >
+    <li
+      className="StorageSelector"
+    >
+      <button
+        className="Block"
+        onClick={[Function]}
+      >
+        <p>
+          Fridge
+        </p>
+      </button>
+      <button
+        className="Round"
+        onClick={[Function]}
+      >
+        i
+      </button>
+    </li>
+    <li
+      className="StorageSelector"
+    >
+      <button
+        className="Block"
+        onClick={[Function]}
+      >
+        <p>
+          Basement
+        </p>
+      </button>
+      <button
+        className="Round"
+        onClick={[Function]}
+      >
+        i
+      </button>
+    </li>
+    <li
+      className="StorageSelector"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <input
+          className="StorageSelector"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+        <input
+          className="StorageSelector"
+          disabled={true}
+          type="submit"
+          value="Add"
+        />
+      </form>
+    </li>
+  </ul>
+  <div
+    className="modal hide"
+  >
+    <div
+      className="modal-main"
+    >
+      <span
+        className="close"
+        onClick={[Function]}
+      >
+        ×
+      </span>
+      <h1>
+        Settings for storage "
+        Fridge
+        ".
+      </h1>
+      <h2>
+        Update name
+      </h2>
+      <form
+        className="Modal"
+        onSubmit={[Function]}
+      >
+        <input
+          className="Modal"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+        <br />
+        <input
+          className="Modal"
+          disabled={false}
+          type="submit"
+          value="Update name"
+        />
+      </form>
+      <h2>
+        Delete storage
+      </h2>
+      <p>
+        To delete the storage and all its content, click the button below. Items and units are not deleted.
+      </p>
+      <button
+        className="Modal"
+        onClick={[Function]}
+      >
+        Delete Storage
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`snapshot tests for StorageSelectorItem component should render initial StorageSelectorItem component correctly 1`] = `
+<li
+  className="StorageSelector"
+>
+  <button
+    className="Block"
+    onClick={[MockFunction]}
+  >
+    <p>
+      Fridge
+    </p>
+  </button>
+  <button
+    className="Round"
+    onClick={[Function]}
+  >
+    i
+  </button>
+</li>
+`;
+
 exports[`snapshot tests for StorageSelectorNewItem component should render initial StorageSelectorNewItem component correctly 1`] = `
 <li
   className="StorageSelector"

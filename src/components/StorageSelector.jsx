@@ -1,16 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../styles/StorageSelector.css';
 import StorageSelectorItem from './StorageSelectorItem';
 import StorageSelectorNewItem from './StorageSelectorNewItem';
 import ModalEditStorage from './ModalEditStorage';
-import { getAllStorages } from '../services/StorageService';
 
 class StorageSelector extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      storageList: [{id: "0", name: "Fridge"}, {id: "1", name: "Basement"}, {id: "2", name: "Garage"}],
       editShow: false,
       editId: 0,
       editName: 'Fridge',
@@ -25,8 +24,15 @@ class StorageSelector extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  componentDidMount() {
-    this.getStorageList();
+  static propTypes = {
+    currentStorage: PropTypes.shape(
+      {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
+    ).isRequired,
+    storageList: PropTypes.arrayOf(
+      PropTypes.shape(
+        {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
+      )
+    ).isRequired,
   }
 
 
@@ -61,14 +67,6 @@ class StorageSelector extends React.Component {
   }
 
 
-  // GET api-operations
-  getStorageList() {
-    getAllStorages().then(storages => {
-      this.setState({storageList: storages})
-    });
-  }
-
-
   // POST api-operations
   addStorage(name) {
     alert('Add new storage: '.concat(name)); // TODO: Add api call
@@ -85,13 +83,12 @@ class StorageSelector extends React.Component {
 
   // rendering
   unpackStorageList() {
-    const keys = [...Array(this.state.storageList.length).keys()]; // Array with keys from 0 to entries.length
+    const keys = [...Array(this.props.storageList.length).keys()]; // Array with keys from 0 to entries.length
 
     return keys.map((currKey) =>
       <StorageSelectorItem
-        key={this.state.storageList[currKey].id}
-        sId={this.state.storageList[currKey].id}
-        sName={this.state.storageList[currKey].name}
+        key={this.props.storageList[currKey].id}
+        storage={this.props.storageList[currKey]}
         showAction={function() { alert('Show storage´s content...'); }}
         editAction={this.showEditModal}
       />
