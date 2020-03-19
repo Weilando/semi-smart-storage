@@ -31,6 +31,7 @@ function Body(props) {
         {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
       )
     ).isRequired,
+    switchStorageAction: PropTypes.func.isRequired,
   }
 
   return (
@@ -38,6 +39,7 @@ function Body(props) {
       <StorageSelector
         currentStorage={props.currentStorage}
         storageList={props.storageList}
+        switchStorageAction={props.switchStorageAction}
       />
       <StorageView
         storage={props.currentStorage}

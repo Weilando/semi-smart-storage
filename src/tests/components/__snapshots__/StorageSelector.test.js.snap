@@ -8,13 +8,15 @@ exports[`snapshot tests for StorageSelector component should render initial Stor
     className="StorageSelector"
   >
     <li
-      className="StorageSelector"
+      className="StorageSelectorActive"
     >
       <button
         className="Block"
         onClick={[Function]}
       >
-        <p>
+        <p
+          className="Active"
+        >
           Fridge
         </p>
       </button>
@@ -32,7 +34,9 @@ exports[`snapshot tests for StorageSelector component should render initial Stor
         className="Block"
         onClick={[Function]}
       >
-        <p>
+        <p
+          className=""
+        >
           Basement
         </p>
       </button>
@@ -119,15 +123,40 @@ exports[`snapshot tests for StorageSelector component should render initial Stor
 </div>
 `;
 
-exports[`snapshot tests for StorageSelectorItem component should render initial StorageSelectorItem component correctly 1`] = `
+exports[`snapshot tests for StorageSelectorItem component should render initial active StorageSelectorItem component correctly 1`] = `
+<li
+  className="StorageSelectorActive"
+>
+  <button
+    className="Block"
+    onClick={[Function]}
+  >
+    <p
+      className="Active"
+    >
+      Fridge
+    </p>
+  </button>
+  <button
+    className="Round"
+    onClick={[Function]}
+  >
+    i
+  </button>
+</li>
+`;
+
+exports[`snapshot tests for StorageSelectorItem component should render initial inactive StorageSelectorItem component correctly 1`] = `
 <li
   className="StorageSelector"
 >
   <button
     className="Block"
-    onClick={[MockFunction]}
+    onClick={[Function]}
   >
-    <p>
+    <p
+      className=""
+    >
       Fridge
     </p>
   </button>

@@ -17,7 +17,9 @@ exports[`snapshot tests for Body component should render Body component correctl
           className="Block"
           onClick={[Function]}
         >
-          <p>
+          <p
+            className=""
+          >
             Basement
           </p>
         </button>
@@ -29,13 +31,15 @@ exports[`snapshot tests for Body component should render Body component correctl
         </button>
       </li>
       <li
-        className="StorageSelector"
+        className="StorageSelectorActive"
       >
         <button
           className="Block"
           onClick={[Function]}
         >
-          <p>
+          <p
+            className="Active"
+          >
             Fridge
           </p>
         </button>

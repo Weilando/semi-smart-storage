@@ -23,6 +23,7 @@ describe('snapshot tests for Body component', () => {
       {id: 2, name: "0.75L"},
       {id: 3, name: "1.0L"}
     ];
+    const switchStorageAction = jest.fn();
 
     const tree = renderer.create(
       <Body
@@ -31,6 +32,7 @@ describe('snapshot tests for Body component', () => {
         storageList={storageList}
         itemList={itemList}
         unitList={unitList}
+        switchStorageAction={switchStorageAction}
       />
     ).toJSON();
 

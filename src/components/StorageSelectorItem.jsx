@@ -7,14 +7,15 @@ function StorageSelectorItem(props) {
     storage: PropTypes.shape(
       {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
     ).isRequired,
+    active: PropTypes.bool.isRequired,
     editAction: PropTypes.func.isRequired,
     showAction: PropTypes.func.isRequired,
   }
 
   return (
-    <li className="StorageSelector">
-      <button className="Block" onClick={props.showAction}>
-        <p>{props.storage.name}</p>
+    <li className={props.active ? "StorageSelectorActive" : "StorageSelector"}>
+      <button className="Block" onClick={() => props.showAction(props.storage)}>
+        <p className={props.active ? "Active" : ""}>{props.storage.name}</p>
       </button>
       <button className="Round" onClick={() => props.editAction(Number(props.storage.id), props.storage.name)}>
         i

@@ -24,11 +24,11 @@
 - [ ] Create a SettingsView component
 
 ## StorageSelector component
-- [ ] Show existing storages
+- [x] Show existing storages
   - [x] Fetch existing storages via Axios
   - [x] Create a component based on list items showing the fetched storages
   - [x] Add on-click recognition to enable toggling StorageView's content
-  - [ ] Extend stylesheet to show hover and highlight actually chosen storage
+  - [x] Extend stylesheet to show hover and highlight actually chosen storage
 - [ ] Enable adding new storages
   - [x] Add component offering a textfield (for the name) and a button (for adding the new storage)
   - [ ] Extend API to create new storages inside the database

@@ -10,11 +10,13 @@ describe('snapshot tests for StorageSelector component', () => {
       {id: 0, name: 'Fridge'},
       {id: 1, name: 'Basement'}
     ];
+    const switchStorageAction = jest.fn();
 
     const tree = renderer.create(
       <StorageSelector
         currentStorage={storageList[0]}
         storageList={storageList}
+        switchStorageAction={switchStorageAction}
       />
     ).toJSON();
 
@@ -23,7 +25,7 @@ describe('snapshot tests for StorageSelector component', () => {
 });
 
 describe('snapshot tests for StorageSelectorItem component', () => {
-  it('should render initial StorageSelectorItem component correctly', () => {
+  it('should render initial active StorageSelectorItem component correctly', () => {
     const storage = {id: 0, name: 'Fridge'};
     const editAction = jest.fn();
     const showAction = jest.fn();
@@ -33,6 +35,24 @@ describe('snapshot tests for StorageSelectorItem component', () => {
         storage={storage}
         editAction={editAction}
         showAction={showAction}
+        active={true}
+      />
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  })
+
+  it('should render initial inactive StorageSelectorItem component correctly', () => {
+    const storage = {id: 0, name: 'Fridge'};
+    const editAction = jest.fn();
+    const showAction = jest.fn();
+
+    const tree = renderer.create(
+      <StorageSelectorItem
+        storage={storage}
+        editAction={editAction}
+        showAction={showAction}
+        active={false}
       />
     ).toJSON();
 

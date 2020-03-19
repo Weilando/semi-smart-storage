@@ -33,6 +33,7 @@ class StorageSelector extends React.Component {
         {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
       )
     ).isRequired,
+    switchStorageAction: PropTypes.func.isRequired,
   }
 
 
@@ -89,7 +90,8 @@ class StorageSelector extends React.Component {
       <StorageSelectorItem
         key={this.props.storageList[currKey].id}
         storage={this.props.storageList[currKey]}
-        showAction={function() { alert('Show storage´s content...'); }}
+        active={this.props.currentStorage === this.props.storageList[currKey]}
+        showAction={this.props.switchStorageAction}
         editAction={this.showEditModal}
       />
     );
