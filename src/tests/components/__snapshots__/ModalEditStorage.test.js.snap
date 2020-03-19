@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot tests for ModalEditStorage component should render hidden ModalEditStorage component correctly 1`] = `
+<div
+  className="modal hide"
+>
+  <div
+    className="modal-main"
+  >
+    <span
+      className="close"
+      onClick={[MockFunction]}
+    >
+      ×
+    </span>
+    <h1>
+      Settings for storage "
+      Fridge
+      ".
+    </h1>
+    <h2>
+      Update name
+    </h2>
+    <form
+      className="Modal"
+      onSubmit={[MockFunction]}
+    >
+      <input
+        className="Modal"
+        onChange={[MockFunction]}
+        type="text"
+        value="Fridge"
+      />
+      <br />
+      <input
+        className="Modal"
+        disabled={false}
+        type="submit"
+        value="Update name"
+      />
+    </form>
+    <h2>
+      Delete storage
+    </h2>
+    <p>
+      To delete the storage and all its content, click the button below. Items and units are not deleted.
+    </p>
+    <button
+      className="Modal"
+      onClick={[MockFunction]}
+    >
+      Delete Storage
+    </button>
+  </div>
+</div>
+`;
+
+exports[`snapshot tests for ModalEditStorage component should render visible ModalEditStorage component correctly 1`] = `
+<div
+  className="modal show"
+>
+  <div
+    className="modal-main"
+  >
+    <span
+      className="close"
+      onClick={[MockFunction]}
+    >
+      ×
+    </span>
+    <h1>
+      Settings for storage "
+      Fridge
+      ".
+    </h1>
+    <h2>
+      Update name
+    </h2>
+    <form
+      className="Modal"
+      onSubmit={[MockFunction]}
+    >
+      <input
+        className="Modal"
+        onChange={[MockFunction]}
+        type="text"
+        value="Fridgerator"
+      />
+      <br />
+      <input
+        className="Modal"
+        disabled={false}
+        type="submit"
+        value="Update name"
+      />
+    </form>
+    <h2>
+      Delete storage
+    </h2>
+    <p>
+      To delete the storage and all its content, click the button below. Items and units are not deleted.
+    </p>
+    <button
+      className="Modal"
+      onClick={[MockFunction]}
+    >
+      Delete Storage
+    </button>
+  </div>
+</div>
+`;

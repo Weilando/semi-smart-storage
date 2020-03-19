@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot tests for StorageSelectorNewItem component should render initial StorageSelectorNewItem component correctly 1`] = `
+<li
+  className="StorageSelector"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="StorageSelector"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <input
+      className="StorageSelector"
+      disabled={true}
+      type="submit"
+      value="Add"
+    />
+  </form>
+</li>
+`;

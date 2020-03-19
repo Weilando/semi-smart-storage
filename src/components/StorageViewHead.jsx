@@ -8,7 +8,7 @@ function StorageViewHead(props) {
         <th>Unit</th>
         <th>Entity</th>
         <th>Options</th>
-        </tr>
+      </tr>
     </thead>
   );
 }

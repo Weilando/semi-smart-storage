@@ -7,10 +7,10 @@ function StorageViewItem(props) {
     iName: PropTypes.string.isRequired,
     iUnit: PropTypes.string.isRequired,
     iQuantity: PropTypes.number.isRequired,
+    decrementAction: PropTypes.func.isRequired,
+    incrementAction: PropTypes.func.isRequired,
     editAction: PropTypes.func.isRequired,
     removeAction: PropTypes.func.isRequired,
-    incrementAction: PropTypes.func.isRequired,
-    decrementAction: PropTypes.func.isRequired,
   };
 
   return(

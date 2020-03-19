@@ -7,10 +7,10 @@ function ModalEditStorage(props) {
     show: PropTypes.bool.isRequired,
     sName: PropTypes.string.isRequired,
     buffer: PropTypes.string.isRequired,
-    closeAction: PropTypes.func.isRequired,
     changeAction: PropTypes.func.isRequired,
-    updateAction: PropTypes.func.isRequired,
+    closeAction: PropTypes.func.isRequired,
     deleteAction: PropTypes.func.isRequired,
+    updateAction: PropTypes.func.isRequired,
   }
 
   return(
