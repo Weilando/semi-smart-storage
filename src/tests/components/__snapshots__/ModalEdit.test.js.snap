@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot tests for ModalEditStorage component should render hidden ModalEditStorage component correctly 1`] = `
+exports[`snapshot tests for ModalEdit component should render hidden ModalEdit component for storages correctly 1`] = `
 <div
   className="modal hide"
 >
@@ -14,7 +14,9 @@ exports[`snapshot tests for ModalEditStorage component should render hidden Moda
       ×
     </span>
     <h1>
-      Settings for storage "
+      Settings for 
+      storage
+       "
       Fridge
       ".
     </h1>
@@ -40,7 +42,8 @@ exports[`snapshot tests for ModalEditStorage component should render hidden Moda
       />
     </form>
     <h2>
-      Delete storage
+      Delete 
+      storage
     </h2>
     <p>
       To delete the storage and all its content, click the button below. Items and units are not deleted.
@@ -49,13 +52,14 @@ exports[`snapshot tests for ModalEditStorage component should render hidden Moda
       className="Modal"
       onClick={[MockFunction]}
     >
-      Delete Storage
+      Delete 
+      storage
     </button>
   </div>
 </div>
 `;
 
-exports[`snapshot tests for ModalEditStorage component should render visible ModalEditStorage component correctly 1`] = `
+exports[`snapshot tests for ModalEdit component should render visible ModalEdit component for storages correctly 1`] = `
 <div
   className="modal show"
 >
@@ -69,7 +73,9 @@ exports[`snapshot tests for ModalEditStorage component should render visible Mod
       ×
     </span>
     <h1>
-      Settings for storage "
+      Settings for 
+      storage
+       "
       Fridge
       ".
     </h1>
@@ -95,7 +101,8 @@ exports[`snapshot tests for ModalEditStorage component should render visible Mod
       />
     </form>
     <h2>
-      Delete storage
+      Delete 
+      storage
     </h2>
     <p>
       To delete the storage and all its content, click the button below. Items and units are not deleted.
@@ -104,7 +111,8 @@ exports[`snapshot tests for ModalEditStorage component should render visible Mod
       className="Modal"
       onClick={[MockFunction]}
     >
-      Delete Storage
+      Delete 
+      storage
     </button>
   </div>
 </div>

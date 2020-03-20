@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import '../styles/StorageSelector.css';
 import StorageSelectorItem from './StorageSelectorItem';
 import StorageSelectorNewItem from './StorageSelectorNewItem';
-import ModalEditStorage from './ModalEditStorage';
+import ModalEdit from './ModalEdit';
+import { ModalMode } from '../constants/modal';
 
 class StorageSelector extends React.Component {
   constructor(props) {
@@ -99,9 +100,10 @@ class StorageSelector extends React.Component {
 
   generateEditModal() {
     return(
-      <ModalEditStorage
+      <ModalEdit
         show={this.state.editShow}
-        sName={this.state.editName}
+        name={this.state.editName}
+        mode={ModalMode.STORAGE}
         buffer={this.state.editBuffer}
         closeAction={this.closeEditModal}
         changeAction={this.handleChange}

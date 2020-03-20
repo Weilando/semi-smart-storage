@@ -1,9 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import ModalEditStorage from '../../components/ModalEditStorage';
+import { ModalMode } from '../../constants/modal';
+import ModalEdit from '../../components/ModalEdit';
 
-describe('snapshot tests for ModalEditStorage component', () => {
-  it('should render visible ModalEditStorage component correctly', () => {
+describe('snapshot tests for ModalEdit component', () => {
+  it('should render visible ModalEdit component for storages correctly', () => {
     const changeAction = jest.fn();
     const closeAction = jest.fn();
     const deleteAction = jest.fn();
@@ -11,9 +12,10 @@ describe('snapshot tests for ModalEditStorage component', () => {
 
 
     const tree = renderer.create(
-      <ModalEditStorage
+      <ModalEdit
         show={true}
-        sName="Fridge"
+        name="Fridge"
+        mode={ModalMode.STORAGE}
         buffer="Fridgerator"
         closeAction={closeAction}
         changeAction={changeAction}
@@ -25,7 +27,7 @@ describe('snapshot tests for ModalEditStorage component', () => {
     expect(tree).toMatchSnapshot();
   })
 
-  it('should render hidden ModalEditStorage component correctly', () => {
+  it('should render hidden ModalEdit component for storages correctly', () => {
     const changeAction = jest.fn();
     const closeAction = jest.fn();
     const deleteAction = jest.fn();
@@ -33,9 +35,10 @@ describe('snapshot tests for ModalEditStorage component', () => {
 
 
     const tree = renderer.create(
-      <ModalEditStorage
+      <ModalEdit
         show={false}
-        sName="Fridge"
+        name="Fridge"
+        mode={ModalMode.STORAGE}
         buffer="Fridge"
         closeAction={closeAction}
         changeAction={changeAction}
