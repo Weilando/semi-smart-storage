@@ -21,14 +21,17 @@ class App extends React.Component {
     this.fetchUnitList = this.fetchUnitList.bind(this);
     this.fetchStorageContent = this.fetchStorageContent.bind(this);
     this.switchCurrentStorage = this.switchCurrentStorage.bind(this);
+    this.addItemToStorage = this.addItemToStorage.bind(this);
+    this.decrementQuantityForItem = this.decrementQuantityForItem.bind(this);
+    this.incrementQuantityForItem = this.incrementQuantityForItem.bind(this);
+    this.removeItemFromStorage = this.removeItemFromStorage.bind(this);
   }
 
   componentDidMount() {
     this.fetchStorageList();
     this.fetchItemList();
     this.fetchUnitList();
-    this.setState({currentStorage: this.state.storageList[0]});
-    this.fetchStorageContent(this.state.currentStorage);
+    this.switchCurrentStorage(this.state.storageList[0]);
   }
 
   switchCurrentStorage(storage) {
@@ -83,6 +86,60 @@ class App extends React.Component {
   }
 
 
+  // POST methods
+  addStorage(name) {
+    console.log('Add new storage: '.concat(name)); // TODO: Add api call
+  }
+
+  updateStorage(updateId, newName) {
+    console.log('Update storage #'.concat(updateId, ': new name is ', newName)); // TODO: Add api call
+  }
+
+  deleteStorage(deleteId) {
+    console.log('Delete storage: #'.concat(deleteId)); // TODO: Add api call
+  }
+
+  addUnit(name) {
+    console.log('Add new unit: '.concat(name)); // TODO: Add api call
+  }
+
+  updateUnit(updateId, newName) {
+    console.log('Update unit #'.concat(updateId, ': new name is ', newName)); // TODO: Add api call
+  }
+
+  deleteUnit(deleteId) {
+    console.log('Delete unit: #'.concat(deleteId)); // TODO: Add api call
+  }
+
+  addItem(name) {
+    console.log('Add new item: '.concat(name)); // TODO: Add api call
+  }
+
+  updateItem(updateId, newName) {
+    console.log('Update item #'.concat(updateId, ': new name is ', newName)); // TODO: Add api call
+  }
+
+  deleteItem(deleteId) {
+    console.log('Delete item: #'.concat(deleteId)); // TODO: Add api call
+  }
+
+  addItemToStorage(itemId, unitId, quantity) {
+    console.log('Add item #'.concat(itemId, ' with quantity ', quantity, ' and unit #', unitId, ' to storage #', this.state.currentStorage.id, '.')); // TODO: Add api call
+  }
+
+  decrementQuantityForItem(itemId) {
+    console.log('Decrement quantity for item #'.concat(itemId, ' from storage #', this.state.currentStorage.id, '.')); // TODO: Add api call
+  }
+
+  incrementQuantityForItem(itemId) {
+    console.log('Increment quantity for item #'.concat(itemId, ' from storage #', this.state.currentStorage.id, '.')); // TODO: Add api call
+  }
+
+  removeItemFromStorage(itemId) {
+    console.log('Remove item #'.concat(itemId, ' from storage #', this.state.currentStorage.id, '.')); // TODO: Add api call
+  }
+
+
   // rendering
   render() {
     return (
@@ -90,6 +147,12 @@ class App extends React.Component {
         <Header
           itemList={this.state.itemList}
           unitList={this.state.unitList}
+          addItemAction={this.addItem}
+          addUnitAction={this.addUnit}
+          deleteItemAction={this.deleteItem}
+          deleteUnitAction={this.deleteUnit}
+          updateItemAction={this.updateItem}
+          updateUnitAction={this.updateUnit}
         />
         <Body
           currentStorage={this.state.currentStorage}
@@ -97,7 +160,14 @@ class App extends React.Component {
           storageList={this.state.storageList}
           itemList={this.state.itemList}
           unitList={this.state.unitList}
+          addStorageAction={this.addStorage}
+          deleteStorageAction={this.deleteStorage}
           switchStorageAction={this.switchCurrentStorage}
+          updateStorageAction={this.updateStorage}
+          addItemToStorageAction={this.addItemToStorage}
+          decrementQuantityForItemAction={this.decrementQuantityForItem}
+          incrementQuantityForItemAction={this.incrementQuantityForItem}
+          removeItemFromStorageAction={this.removeItemFromStorage}
         />
       </div>
     );

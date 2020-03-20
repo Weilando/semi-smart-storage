@@ -34,7 +34,10 @@ class StorageSelector extends React.Component {
         {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
       )
     ).isRequired,
-    switchStorageAction: PropTypes.func.isRequired,
+    addAction: PropTypes.func.isRequired,
+    deleteAction: PropTypes.func.isRequired,
+    switchAction: PropTypes.func.isRequired,
+    updateAction: PropTypes.func.isRequired,
   }
 
 
@@ -58,28 +61,14 @@ class StorageSelector extends React.Component {
   handleUpdate(event) {
     event.preventDefault();
     if(this.state.editBuffer.localeCompare(this.state.editName) !== 0) {
-      this.updateStorage(this.state.editId, this.state.editBuffer);
+      this.props.updateAction(this.state.editId, this.state.editBuffer);
     }
     this.closeEditModal();
   }
 
   handleDelete() {
-    this.deleteStorage(this.state.editId);
+    this.props.deleteAction(this.state.editId);
     this.closeEditModal();
-  }
-
-
-  // POST api-operations
-  addStorage(name) {
-    alert('Add new storage: '.concat(name)); // TODO: Add api call
-  }
-
-  updateStorage(updateId, newName) {
-    alert('Update storage #'.concat(updateId, ': new name is ', newName)); // TODO: Add api call
-  }
-
-  deleteStorage(deleteId) {
-    alert('Delete storage: #'.concat(deleteId)); // TODO: Add api call
   }
 
 
@@ -92,7 +81,7 @@ class StorageSelector extends React.Component {
         key={this.props.storageList[currKey].id}
         storage={this.props.storageList[currKey]}
         active={this.props.currentStorage === this.props.storageList[currKey]}
-        showAction={this.props.switchStorageAction}
+        showAction={this.props.switchAction}
         editAction={this.showEditModal}
       />
     );
@@ -121,7 +110,7 @@ class StorageSelector extends React.Component {
       <div className="StorageSelector">
         <ul className="StorageSelector">
           {storageList}
-          <StorageSelectorNewItem addStorage={this.addStorage}/>
+          <StorageSelectorNewItem addStorage={this.props.addAction}/>
         </ul>
 
         {editModal}

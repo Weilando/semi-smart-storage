@@ -21,7 +21,6 @@ function ModalEdit(props) {
         <span className="close" onClick={props.closeAction}>&times;</span>
         <h1>Settings for {props.mode} "{props.name}".</h1>
 
-
         <h2>Update name</h2>
         <form onSubmit={props.updateAction} className="Modal">
           <input

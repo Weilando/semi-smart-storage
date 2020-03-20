@@ -8,6 +8,10 @@ import StorageViewNewItem from '../../components/StorageViewNewItem';
 describe('snapshot tests for StorageView component', () => {
   it('should render empty StorageView component correctly', () => {
     const storage = {id: 0, name: "Basement"};
+    const addItemToStorageAction = jest.fn();
+    const decrementQuantityForItemAction = jest.fn();
+    const incrementQuantityForItemAction = jest.fn();
+    const removeItemFromStorageAction = jest.fn();
 
     const tree = renderer.create(
       <StorageView
@@ -15,6 +19,10 @@ describe('snapshot tests for StorageView component', () => {
         storageContent={[]}
         itemList={[]}
         unitList={[]}
+        addItemToStorageAction={addItemToStorageAction}
+        decrementQuantityForItemAction={decrementQuantityForItemAction}
+        incrementQuantityForItemAction={incrementQuantityForItemAction}
+        removeItemFromStorageAction={removeItemFromStorageAction}
       />
     ).toJSON();
 
@@ -40,6 +48,10 @@ describe('snapshot tests for StorageView component', () => {
       {id: 2, name: "0.75L"},
       {id: 3, name: "1.0L"}
     ];
+    const addItemToStorageAction = jest.fn();
+    const decrementQuantityForItemAction = jest.fn();
+    const incrementQuantityForItemAction = jest.fn();
+    const removeItemFromStorageAction = jest.fn();
 
     const tree = renderer.create(
       <StorageView
@@ -47,6 +59,10 @@ describe('snapshot tests for StorageView component', () => {
         storageContent={storageContent}
         itemList={itemList}
         unitList={unitList}
+        addItemToStorageAction={addItemToStorageAction}
+        decrementQuantityForItemAction={decrementQuantityForItemAction}
+        incrementQuantityForItemAction={incrementQuantityForItemAction}
+        removeItemFromStorageAction={removeItemFromStorageAction}
       />
     ).toJSON();
 

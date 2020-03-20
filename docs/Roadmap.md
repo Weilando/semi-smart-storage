@@ -21,7 +21,7 @@
 - [x] Create main view showing a storage-selector on the left and the selected storage's entries on the right
 - [x] Create a StorageSelector component
 - [x] Create a StorageView component
-- [ ] Create a SettingsView component
+- [x] Create components for general, item- and unit-settings
 
 ## StorageSelector component
 - [x] Show existing storages
@@ -52,9 +52,9 @@
   - [ ] Trigger corresponding API-requests to alter or delete items and update the view afterwards
 
 ## SettingsView component
-- [ ] Add settings-button to header (top right corner?)
-- [ ] Show modal if active
-- [ ] Option for editing available item names
-- [ ] Option for editing available units
+- [x] Add settings-buttons for general, item- and unit-settings to header
+- [x] Show modal if active
+- [x] Option for editing available item names
+- [x] Option for editing available units
 - [ ] Maybe several themes?
 - [ ] Maybe reset button (restore factory settings)?

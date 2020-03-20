@@ -81,7 +81,9 @@ exports[`snapshot tests for StorageSelector component should render initial Stor
         ×
       </span>
       <h1>
-        Settings for storage "
+        Settings for 
+        storage
+         "
         Fridge
         ".
       </h1>
@@ -107,7 +109,8 @@ exports[`snapshot tests for StorageSelector component should render initial Stor
         />
       </form>
       <h2>
-        Delete storage
+        Delete 
+        storage
       </h2>
       <p>
         To delete the storage and all its content, click the button below. Items and units are not deleted.
@@ -116,7 +119,8 @@ exports[`snapshot tests for StorageSelector component should render initial Stor
         className="Modal"
         onClick={[Function]}
       >
-        Delete Storage
+        Delete 
+        storage
       </button>
     </div>
   </div>

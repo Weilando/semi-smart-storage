@@ -23,7 +23,14 @@ describe('snapshot tests for Body component', () => {
       {id: 2, name: "0.75L"},
       {id: 3, name: "1.0L"}
     ];
+    const addStorageAction = jest.fn();
+    const deleteStorageAction = jest.fn();
     const switchStorageAction = jest.fn();
+    const updateStorageAction = jest.fn();
+    const addItemToStorageAction = jest.fn();
+    const decrementQuantityForItemAction = jest.fn();
+    const incrementQuantityForItemAction = jest.fn();
+    const removeItemFromStorageAction = jest.fn();
 
     const tree = renderer.create(
       <Body
@@ -32,7 +39,14 @@ describe('snapshot tests for Body component', () => {
         storageList={storageList}
         itemList={itemList}
         unitList={unitList}
+        addStorageAction={addStorageAction}
+        deleteStorageAction={deleteStorageAction}
         switchStorageAction={switchStorageAction}
+        updateStorageAction={updateStorageAction}
+        addItemToStorageAction={addItemToStorageAction}
+        decrementQuantityForItemAction={decrementQuantityForItemAction}
+        incrementQuantityForItemAction={incrementQuantityForItemAction}
+        removeItemFromStorageAction={removeItemFromStorageAction}
       />
     ).toJSON();
 
@@ -42,8 +56,34 @@ describe('snapshot tests for Body component', () => {
 
 describe('snapshot tests for Header component', () => {
   it('should render Header component correctly', () => {
+    const itemList = [
+      {id: 0, name: "Sparkling water"},
+      {id: 1, name: "Apple juice"},
+      {id: 3, name: "Milk"},
+    ];
+    const unitList = [
+      {id: 1, name: "0.5L"},
+      {id: 2, name: "0.75L"},
+      {id: 3, name: "1.0L"}
+    ];
+    const addItemAction = jest.fn();
+    const addUnitAction = jest.fn();
+    const deleteItemAction = jest.fn();
+    const deleteUnitAction = jest.fn();
+    const updateItemAction = jest.fn();
+    const updateUnitAction = jest.fn();
+
     const tree = renderer.create(
-      <Header/>
+      <Header
+        itemList={itemList}
+        unitList={unitList}
+        addItemAction={addItemAction}
+        addUnitAction={addUnitAction}
+        deleteItemAction={deleteItemAction}
+        deleteUnitAction={deleteUnitAction}
+        updateItemAction={updateItemAction}
+        updateUnitAction={updateUnitAction}
+      />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -10,13 +10,19 @@ describe('snapshot tests for StorageSelector component', () => {
       {id: 0, name: 'Fridge'},
       {id: 1, name: 'Basement'}
     ];
+    const addAction = jest.fn();
+    const deleteAction = jest.fn();
     const switchStorageAction = jest.fn();
+    const updateAction = jest.fn();
 
     const tree = renderer.create(
       <StorageSelector
         currentStorage={storageList[0]}
         storageList={storageList}
-        switchStorageAction={switchStorageAction}
+        addAction={addAction}
+        deleteAction={deleteAction}
+        switchAction={switchStorageAction}
+        updateAction={updateAction}
       />
     ).toJSON();
 

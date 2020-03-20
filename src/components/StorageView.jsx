@@ -9,11 +9,7 @@ class StorageView extends React.Component {
   constructor(props) {
     super(props);
 
-    this.addItem = this.addItem.bind(this);
-    this.decrementQuantityForItem = this.decrementQuantityForItem.bind(this);
-    this.incrementQuantityForItem = this.incrementQuantityForItem.bind(this);
     this.editItem = this.editItem.bind(this);
-    this.removeItem = this.removeItem.bind(this);
   }
 
   static propTypes = {
@@ -38,29 +34,15 @@ class StorageView extends React.Component {
         {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
       )
     ).isRequired,
+    addItemToStorageAction: PropTypes.func.isRequired,
+    decrementQuantityForItemAction: PropTypes.func.isRequired,
+    incrementQuantityForItemAction: PropTypes.func.isRequired,
+    removeItemFromStorageAction: PropTypes.func.isRequired,
   }
 
   // edit-modal handling
   editItem(itemId) {
     alert('Edit item #'.concat(itemId, ' from storage #', this.props.storage.id, ' inside a modal.'));
-  }
-
-
-  // POST api-operations
-  addItem(itemId, unitId, quantity) {
-    alert('Add item #'.concat(itemId, ' with quantity ', quantity, ' and unit #', unitId, ' to storage #', this.props.storage.id, '.'));
-  }
-
-  decrementQuantityForItem(itemId) {
-    alert('Decrement quantity for item #'.concat(itemId, ' from storage #', this.props.storage.id, '.'));
-  }
-
-  incrementQuantityForItem(itemId) {
-    alert('Increment quantity for item #'.concat(itemId, ' from storage #', this.props.storage.id, '.'));
-  }
-
-  removeItem(itemId) {
-    alert('Remove item #'.concat(itemId, ' from storage #', this.props.storage.id, '.'));
   }
 
 
@@ -75,10 +57,10 @@ class StorageView extends React.Component {
         iName={this.props.storageContent[currKey].name}
         iUnit={this.props.storageContent[currKey].unit}
         iQuantity={this.props.storageContent[currKey].quantity}
-        decrementAction={this.decrementQuantityForItem}
-        incrementAction={this.incrementQuantityForItem}
+        decrementAction={this.props.decrementQuantityForItemAction}
+        incrementAction={this.props.incrementQuantityForItemAction}
         editAction={this.editItem}
-        removeAction={this.removeItem}
+        removeAction={this.props.removeItemFromStorageAction}
       />
     );
   }
@@ -98,7 +80,7 @@ class StorageView extends React.Component {
           <StorageViewNewItem
             itemList={this.props.itemList}
             unitList={this.props.unitList}
-            addAction={this.addItem}
+            addAction={this.props.addItemToStorageAction}
           />
         </table>
       </div>
