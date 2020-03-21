@@ -16,7 +16,7 @@ exports[`snapshot tests for StorageView component should render StorageView comp
           Unit
         </th>
         <th>
-          Entity
+          Quantity
         </th>
         <th>
           Options
@@ -37,6 +37,7 @@ exports[`snapshot tests for StorageView component should render StorageView comp
         <td>
           <button
             className="StorageView"
+            disabled={false}
             onClick={[Function]}
           >
             -
@@ -74,6 +75,7 @@ exports[`snapshot tests for StorageView component should render StorageView comp
         <td>
           <button
             className="StorageView"
+            disabled={false}
             onClick={[Function]}
           >
             -
@@ -220,7 +222,7 @@ exports[`snapshot tests for StorageView component should render empty StorageVie
           Unit
         </th>
         <th>
-          Entity
+          Quantity
         </th>
         <th>
           Options
@@ -311,7 +313,7 @@ exports[`snapshot tests for StorageViewHead component should render StorageViewH
       Unit
     </th>
     <th>
-      Entity
+      Quantity
     </th>
     <th>
       Options
@@ -334,6 +336,48 @@ exports[`snapshot tests for StorageViewItem component should render StorageViewI
   <td>
     <button
       className="StorageView"
+      disabled={false}
+      onClick={[Function]}
+    >
+      -
+    </button>
+    <button
+      className="StorageView"
+      onClick={[Function]}
+    >
+      +
+    </button>
+    <button
+      className="StorageView"
+      onClick={[Function]}
+    >
+      Edit
+    </button>
+    <button
+      className="StorageView"
+      onClick={[Function]}
+    >
+      Remove
+    </button>
+  </td>
+</tr>
+`;
+
+exports[`snapshot tests for StorageViewItem component should render StorageViewItem component with disabled decrement-button correctly 1`] = `
+<tr>
+  <td>
+    Milk
+  </td>
+  <td>
+    1L
+  </td>
+  <td>
+    0.9
+  </td>
+  <td>
+    <button
+      className="StorageView"
+      disabled={true}
       onClick={[Function]}
     >
       -

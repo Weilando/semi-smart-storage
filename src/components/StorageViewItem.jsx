@@ -21,6 +21,7 @@ function StorageViewItem(props) {
       <td>{props.iQuantity}</td>
       <td>
         <button className='StorageView'
+          disabled={props.iQuantity < 1}
           onClick={() => props.updateAction(UpdateMode.STORAGE_CONTENT_DECR, props.iId, props.storageId)}
         >-</button>
         <button className='StorageView'

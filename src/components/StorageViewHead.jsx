@@ -6,7 +6,7 @@ function StorageViewHead(props) {
       <tr>
         <th>Name</th>
         <th>Unit</th>
-        <th>Entity</th>
+        <th>Quantity</th>
         <th>Options</th>
       </tr>
     </thead>

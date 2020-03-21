@@ -143,7 +143,7 @@ exports[`snapshot tests for Body component should render Body component correctl
             Unit
           </th>
           <th>
-            Entity
+            Quantity
           </th>
           <th>
             Options
@@ -164,6 +164,7 @@ exports[`snapshot tests for Body component should render Body component correctl
           <td>
             <button
               className="StorageView"
+              disabled={false}
               onClick={[Function]}
             >
               -
@@ -201,6 +202,7 @@ exports[`snapshot tests for Body component should render Body component correctl
           <td>
             <button
               className="StorageView"
+              disabled={false}
               onClick={[Function]}
             >
               -

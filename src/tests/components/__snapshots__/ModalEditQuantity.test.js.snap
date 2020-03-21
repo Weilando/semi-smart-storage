@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot tests for ModalEditQuantity component should render hidden ModalEdit component correctly 1`] = `
+exports[`snapshot tests for ModalEditQuantity component should render hidden ModalEditQuantity component correctly 1`] = `
 <div
   className="modal hide"
 >

@@ -82,6 +82,28 @@ describe('snapshot tests for StorageViewItem component', () => {
 
     expect(tree).toMatchSnapshot();
   })
+
+  it('should render StorageViewItem component with disabled decrement-button correctly', () => {
+    const deleteAction = jest.fn();
+    const editAction = jest.fn();
+    const updateAction = jest.fn();
+    const removeAction = jest.fn();
+
+    const tree = renderer.create(
+      <StorageViewItem
+        iId={42}
+        iName="Milk"
+        iUnit="1L"
+        iQuantity={0.9}
+        storageId={3}
+        deleteAction={deleteAction}
+        editAction={editAction}
+        updateAction={updateAction}
+      />
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  })
 });
 
 describe('snapshot tests for StorageViewNewItem component', () => {
