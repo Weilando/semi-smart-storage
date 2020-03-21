@@ -1,24 +1,20 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { ModalMode } from '../../constants/enums';
-import ModalEdit from '../../components/ModalEdit';
+import ModalEditQuantity from '../../components/ModalEditQuantity';
 
-describe('snapshot tests for ModalEdit component', () => {
-  it('should render visible ModalEdit component for storages correctly', () => {
+describe('snapshot tests for ModalEditQuantity component', () => {
+  it('should render visible ModalEditQuantity component correctly', () => {
     const changeAction = jest.fn();
     const closeAction = jest.fn();
-    const deleteAction = jest.fn();
     const updateAction = jest.fn();
 
     const tree = renderer.create(
-      <ModalEdit
+      <ModalEditQuantity
         show={true}
-        name="Fridge"
-        mode={ModalMode.STORAGE}
-        buffer="Fridgerator"
+        quantity={4}
+        buffer={5}
         closeAction={closeAction}
         changeAction={changeAction}
-        deleteAction={updateAction}
         updateAction={updateAction}
       />
     ).toJSON();
@@ -26,21 +22,18 @@ describe('snapshot tests for ModalEdit component', () => {
     expect(tree).toMatchSnapshot();
   })
 
-  it('should render hidden ModalEdit component for storages correctly', () => {
+  it('should render hidden ModalEditQuantity component correctly', () => {
     const changeAction = jest.fn();
     const closeAction = jest.fn();
-    const deleteAction = jest.fn();
     const updateAction = jest.fn();
 
     const tree = renderer.create(
-      <ModalEdit
+      <ModalEditQuantity
         show={false}
-        name="Fridge"
-        mode={ModalMode.STORAGE}
-        buffer="Fridge"
+        quantity={4}
+        buffer={5}
         closeAction={closeAction}
         changeAction={changeAction}
-        deleteAction={updateAction}
         updateAction={updateAction}
       />
     ).toJSON();

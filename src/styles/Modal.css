@@ -30,6 +30,12 @@ input[type="text"].Modal {
   width: 100%;
 }
 
+input[type="number"].Modal {
+  background-color: transparent;
+  border-width: thin;
+  width: 50%;
+}
+
 input[type="submit"].Modal {
   margin-right: 0;
 }

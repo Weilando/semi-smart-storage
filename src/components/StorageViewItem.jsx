@@ -26,7 +26,7 @@ function StorageViewItem(props) {
         <button className='StorageView'
           onClick={() => props.updateAction(UpdateMode.STORAGE_CONTENT_INCR, props.iId, props.storageId)}
         >+</button>
-        <button className='StorageView' onClick={() => props.editAction(props.iId)}>Edit</button>
+        <button className='StorageView' onClick={() => props.editAction(props.iId, props.iQuantity)}>Edit</button>
         <button className='StorageView' onClick={() => props.deleteAction(DeleteMode.STORAGE_CONTENT, props.iId, props.storageId)}>Remove</button>
       </td>
     </tr>

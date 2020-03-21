@@ -293,6 +293,41 @@ exports[`snapshot tests for Body component should render Body component correctl
         </tr>
       </tfoot>
     </table>
+    <div
+      className="modal hide"
+    >
+      <div
+        className="modal-main"
+      >
+        <span
+          className="close"
+          onClick={[Function]}
+        >
+          ×
+        </span>
+        <h1>
+          Change quantity
+        </h1>
+        <form
+          className="Modal"
+          onSubmit={[Function]}
+        >
+          <input
+            className="Modal"
+            min="0"
+            onChange={[Function]}
+            step="0.1"
+            type="number"
+            value={0}
+          />
+          <input
+            className="Modal"
+            type="submit"
+            value="Update quantity"
+          />
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 `;

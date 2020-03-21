@@ -3,13 +3,26 @@ import PropTypes from 'prop-types';
 import StorageViewHead from './StorageViewHead';
 import StorageViewItem from './StorageViewItem';
 import StorageViewNewItem from './StorageViewNewItem';
+import ModalEditQuantity from './ModalEditQuantity';
+import { UpdateMode } from '../constants/enums';
 import '../styles/StorageView.css';
 
 class StorageView extends React.Component {
   constructor(props) {
     super(props);
 
-    this.editItem = this.editItem.bind(this);
+    this.state = {
+      editShow: false,
+      editId: 0,
+      editQuantity: 0,
+      editBuffer: 0
+    };
+
+    this.showEditQuantityModal = this.showEditQuantityModal.bind(this);
+    this.closeEditQuantityModal = this.closeEditQuantityModal.bind(this);
+    this.generateEditQuantityModal = this.generateEditQuantityModal.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   static propTypes = {
@@ -40,8 +53,28 @@ class StorageView extends React.Component {
   }
 
   // edit-modal handling
-  editItem(itemId) { // TODO: build modal
-    alert('Edit item #'.concat(itemId, ' from storage #', this.props.storage.id, ' inside a modal.'));
+  showEditQuantityModal(id, quantity) {
+    if(this.state.editShow === false) {
+      this.setState({editShow: true, editId: id, editQuantity: quantity, editBuffer: quantity});
+    }
+  }
+
+  closeEditQuantityModal() {
+    if(this.state.editShow === true) {
+      this.setState({editShow: false});
+    }
+  }
+
+  handleChange(event) {
+    this.setState({editBuffer: Number(event.target.value)});
+  }
+
+  handleUpdate(event) {
+    event.preventDefault();
+    if(this.state.editBuffer !== this.state.editQuantity) {
+      this.props.updateAction(UpdateMode.STORAGE_CONTENT_EDIT, this.state.editId, this.state.editBuffer, this.props.storage.id);
+    }
+    this.closeEditQuantityModal();
   }
 
 
@@ -58,14 +91,28 @@ class StorageView extends React.Component {
         iQuantity={this.props.storageContent[currKey].quantity}
         storageId={this.props.storage.id}
         deleteAction={this.props.deleteAction}
-        editAction={this.editItem}
+        editAction={this.showEditQuantityModal}
         updateAction={this.props.updateAction}
+      />
+    );
+  }
+
+  generateEditQuantityModal() {
+    return(
+      <ModalEditQuantity
+        show={this.state.editShow}
+        quantity={this.state.editQuantity}
+        buffer={Number(this.state.editBuffer)}
+        closeAction={this.closeEditQuantityModal}
+        changeAction={this.handleChange}
+        updateAction={this.handleUpdate}
       />
     );
   }
 
   render() {
     let content = this.unpackStorageContent();
+    let modal = this.generateEditQuantityModal();
 
     return (
       <div className="StorageView">
@@ -83,6 +130,7 @@ class StorageView extends React.Component {
             addAction={this.props.addAction}
           />
         </table>
+        {modal}
       </div>
     );
   }

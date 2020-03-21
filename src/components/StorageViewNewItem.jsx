@@ -74,7 +74,6 @@ class StorageViewNewItem extends React.Component {
       <option
         key={this.props.unitList[currKey].id}
         value={this.props.unitList[currKey].id}
-        //{currKey === 0 ? 'selected' : }
       >
         {this.props.unitList[currKey].name}
       </option>
