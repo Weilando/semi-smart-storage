@@ -31,14 +31,10 @@ function Body(props) {
         {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
       )
     ).isRequired,
-    addStorageAction: PropTypes.func.isRequired,
-    deleteStorageAction: PropTypes.func.isRequired,
+    addAction: PropTypes.func.isRequired,
+    deleteAction: PropTypes.func.isRequired,
     switchStorageAction: PropTypes.func.isRequired,
-    updateStorageAction: PropTypes.func.isRequired,
-    addItemToStorageAction: PropTypes.func.isRequired,
-    decrementQuantityForItemAction: PropTypes.func.isRequired,
-    incrementQuantityForItemAction: PropTypes.func.isRequired,
-    removeItemFromStorageAction: PropTypes.func.isRequired,
+    updateAction: PropTypes.func.isRequired,
   }
 
   return (
@@ -46,20 +42,19 @@ function Body(props) {
       <StorageSelector
         currentStorage={props.currentStorage}
         storageList={props.storageList}
-        addAction={props.addStorageAction}
-        deleteAction={props.deleteStorageAction}
+        addAction={props.addAction}
+        deleteAction={props.deleteAction}
         switchAction={props.switchStorageAction}
-        updateAction={props.updateStorageAction}
+        updateAction={props.updateAction}
       />
       <StorageView
         storage={props.currentStorage}
         storageContent={props.currentStorageContent}
         itemList={props.itemList}
         unitList={props.unitList}
-        addItemToStorageAction={props.addItemToStorageAction}
-        decrementQuantityForItemAction={props.decrementQuantityForItemAction}
-        incrementQuantityForItemAction={props.incrementQuantityForItemAction}
-        removeItemFromStorageAction={props.removeItemFromStorageAction}
+        addAction={props.addAction}
+        deleteAction={props.deleteAction}
+        updateAction={props.updateAction}
       />
     </div>
   );

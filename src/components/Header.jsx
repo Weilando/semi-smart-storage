@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ModalEdit from './ModalEdit';
 import ModalSettings from './ModalSettings';
 import ModalList from './ModalList';
+import { AddMode, DeleteMode, UpdateMode } from '../constants/enums';
 import { ModalMode } from '../constants/enums';
 import '../styles/Header.css';
 
@@ -53,14 +54,11 @@ class Header extends React.Component {
       )
     ).isRequired,
     dummy: PropTypes.bool.isRequired,
-    switchDummyAction: PropTypes.func.isRequired,
+    addAction: PropTypes.func.isRequired,
+    deleteAction: PropTypes.func.isRequired,
     reloadAction: PropTypes.func.isRequired,
-    addItemAction: PropTypes.func.isRequired,
-    addUnitAction: PropTypes.func.isRequired,
-    deleteItemAction: PropTypes.func.isRequired,
-    deleteUnitAction: PropTypes.func.isRequired,
-    updateItemAction: PropTypes.func.isRequired,
-    updateUnitAction: PropTypes.func.isRequired,
+    switchDummyAction: PropTypes.func.isRequired,
+    updateAction: PropTypes.func.isRequired,
   }
 
 
@@ -124,36 +122,36 @@ class Header extends React.Component {
   }
 
   handleItemAdd(name) {
-    this.props.addItemAction(name);
+    this.props.addAction(AddMode.ITEM_LIST, name);
   }
 
   handleItemUpdate(event) {
     event.preventDefault();
     if(this.state.editBuffer.localeCompare(this.state.editName) !== 0) {
-      this.props.updateItemAction(this.state.editId, this.state.editBuffer);
+      this.props.updateAction(UpdateMode.ITEM_LIST, this.state.editId, this.state.editBuffer);
     }
     this.closeEditModal();
   }
 
   handleItemDelete() {
-    this.props.deleteItemAction(this.state.editId);
+    this.props.deleteAction(DeleteMode.ITEM_LIST, this.state.editId);
     this.closeEditModal();
   }
 
   handleUnitAdd(name) {
-    this.props.addUnitAction(name);
+    this.props.addAction(AddMode.UNIT_LIST, name);
   }
 
   handleUnitUpdate(event) {
     event.preventDefault();
     if(this.state.editBuffer.localeCompare(this.state.editName) !== 0) {
-      this.props.updateUnitAction(this.state.editId, this.state.editBuffer);
+      this.props.updateAction(UpdateMode.UNIT_LIST, this.state.editId, this.state.editBuffer);
     }
     this.closeEditModal();
   }
 
   handleUnitDelete() {
-    this.props.deleteUnitAction(this.state.editId);
+    this.props.deleteAction(DeleteMode.UNIT_LIST, this.state.editId);
     this.closeEditModal();
   }
 

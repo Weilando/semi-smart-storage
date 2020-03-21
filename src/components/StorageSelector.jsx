@@ -4,6 +4,7 @@ import '../styles/StorageSelector.css';
 import StorageSelectorItem from './StorageSelectorItem';
 import StorageSelectorNewItem from './StorageSelectorNewItem';
 import ModalEdit from './ModalEdit';
+import { DeleteMode, UpdateMode } from '../constants/enums';
 import { ModalMode } from '../constants/enums';
 
 class StorageSelector extends React.Component {
@@ -61,13 +62,13 @@ class StorageSelector extends React.Component {
   handleUpdate(event) {
     event.preventDefault();
     if(this.state.editBuffer.localeCompare(this.state.editName) !== 0) {
-      this.props.updateAction(this.state.editId, this.state.editBuffer);
+      this.props.updateAction(UpdateMode.STORAGE_LIST, this.state.editId, this.state.editBuffer);
     }
     this.closeEditModal();
   }
 
   handleDelete() {
-    this.props.deleteAction(this.state.editId);
+    this.props.deleteAction(DeleteMode.STORAGE_LIST, this.state.editId);
     this.closeEditModal();
   }
 

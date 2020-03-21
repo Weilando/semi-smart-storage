@@ -6,14 +6,10 @@ import { DummyItemListShort, DummyStorageContentShort, DummyStorageListShort, Du
 
 describe('snapshot tests for Body component', () => {
   it('should render Body component correctly', () => {
-    const addStorageAction = jest.fn();
-    const deleteStorageAction = jest.fn();
+    const addAction = jest.fn();
+    const deleteAction = jest.fn();
     const switchStorageAction = jest.fn();
-    const updateStorageAction = jest.fn();
-    const addItemToStorageAction = jest.fn();
-    const decrementQuantityForItemAction = jest.fn();
-    const incrementQuantityForItemAction = jest.fn();
-    const removeItemFromStorageAction = jest.fn();
+    const updateAction = jest.fn();
 
     const tree = renderer.create(
       <Body
@@ -22,14 +18,10 @@ describe('snapshot tests for Body component', () => {
         storageList={DummyStorageListShort}
         itemList={DummyItemListShort}
         unitList={DummyUnitListShort}
-        addStorageAction={addStorageAction}
-        deleteStorageAction={deleteStorageAction}
+        addAction={addAction}
+        deleteAction={deleteAction}
         switchStorageAction={switchStorageAction}
-        updateStorageAction={updateStorageAction}
-        addItemToStorageAction={addItemToStorageAction}
-        decrementQuantityForItemAction={decrementQuantityForItemAction}
-        incrementQuantityForItemAction={incrementQuantityForItemAction}
-        removeItemFromStorageAction={removeItemFromStorageAction}
+        updateAction={updateAction}
       />
     ).toJSON();
 
@@ -39,28 +31,22 @@ describe('snapshot tests for Body component', () => {
 
 describe('snapshot tests for Header component', () => {
   it('should render Header component correctly', () => {
+    const addAction = jest.fn();
+    const deleteAction = jest.fn();
     const reloadAction = jest.fn();
     const switchDummyAction = jest.fn();
-    const addItemAction = jest.fn();
-    const addUnitAction = jest.fn();
-    const deleteItemAction = jest.fn();
-    const deleteUnitAction = jest.fn();
-    const updateItemAction = jest.fn();
-    const updateUnitAction = jest.fn();
+    const updateAction = jest.fn();
 
     const tree = renderer.create(
       <Header
         itemList={DummyItemListShort}
         unitList={DummyUnitListShort}
         dummy={true}
+        addAction={addAction}
+        deleteAction={deleteAction}
         reloadAction={reloadAction}
         switchDummyAction={switchDummyAction}
-        addItemAction={addItemAction}
-        addUnitAction={addUnitAction}
-        deleteItemAction={deleteItemAction}
-        deleteUnitAction={deleteUnitAction}
-        updateItemAction={updateItemAction}
-        updateUnitAction={updateUnitAction}
+        updateAction={updateAction}
       />
     ).toJSON();
 

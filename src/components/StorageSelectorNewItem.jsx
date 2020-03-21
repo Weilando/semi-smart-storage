@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { AddMode } from '../constants/enums';
 import '../styles/StorageSelector.css';
 
 class StorageSelectorNewItem extends React.Component {
@@ -24,7 +25,7 @@ class StorageSelectorNewItem extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.addStorage(this.state.name);
+    this.props.addStorage(AddMode.STORAGE_LIST, this.state.name);
     this.setState({name: ''});
   }
 

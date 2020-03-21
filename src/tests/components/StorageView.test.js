@@ -9,10 +9,9 @@ import { DummyItemListShort, DummyStorageContentShort, DummyUnitListShort} from 
 describe('snapshot tests for StorageView component', () => {
   it('should render empty StorageView component correctly', () => {
     const storage = {id: 0, name: "Basement"};
-    const addItemToStorageAction = jest.fn();
-    const decrementQuantityForItemAction = jest.fn();
-    const incrementQuantityForItemAction = jest.fn();
-    const removeItemFromStorageAction = jest.fn();
+    const addAction = jest.fn();
+    const deleteAction = jest.fn();
+    const updateAction = jest.fn();
 
     const tree = renderer.create(
       <StorageView
@@ -20,10 +19,9 @@ describe('snapshot tests for StorageView component', () => {
         storageContent={[]}
         itemList={[]}
         unitList={[]}
-        addItemToStorageAction={addItemToStorageAction}
-        decrementQuantityForItemAction={decrementQuantityForItemAction}
-        incrementQuantityForItemAction={incrementQuantityForItemAction}
-        removeItemFromStorageAction={removeItemFromStorageAction}
+        addAction={addAction}
+        deleteAction={deleteAction}
+        updateAction={updateAction}
       />
     ).toJSON();
 
@@ -32,10 +30,9 @@ describe('snapshot tests for StorageView component', () => {
 
   it('should render StorageView component with content correctly', () => {
     const storage = {id: 3, name: "Fridge"};
-    const addItemToStorageAction = jest.fn();
-    const decrementQuantityForItemAction = jest.fn();
-    const incrementQuantityForItemAction = jest.fn();
-    const removeItemFromStorageAction = jest.fn();
+    const addAction = jest.fn();
+    const deleteAction = jest.fn();
+    const updateAction = jest.fn();
 
     const tree = renderer.create(
       <StorageView
@@ -43,10 +40,9 @@ describe('snapshot tests for StorageView component', () => {
         storageContent={DummyStorageContentShort}
         itemList={DummyItemListShort}
         unitList={DummyUnitListShort}
-        addItemToStorageAction={addItemToStorageAction}
-        decrementQuantityForItemAction={decrementQuantityForItemAction}
-        incrementQuantityForItemAction={incrementQuantityForItemAction}
-        removeItemFromStorageAction={removeItemFromStorageAction}
+        addAction={addAction}
+        deleteAction={deleteAction}
+        updateAction={updateAction}
       />
     ).toJSON();
 

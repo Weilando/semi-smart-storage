@@ -34,14 +34,13 @@ class StorageView extends React.Component {
         {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
       )
     ).isRequired,
-    addItemToStorageAction: PropTypes.func.isRequired,
-    decrementQuantityForItemAction: PropTypes.func.isRequired,
-    incrementQuantityForItemAction: PropTypes.func.isRequired,
-    removeItemFromStorageAction: PropTypes.func.isRequired,
+    addAction: PropTypes.func.isRequired,
+    deleteAction: PropTypes.func.isRequired,
+    updateAction: PropTypes.func.isRequired,
   }
 
   // edit-modal handling
-  editItem(itemId) {
+  editItem(itemId) { // TODO: build modal
     alert('Edit item #'.concat(itemId, ' from storage #', this.props.storage.id, ' inside a modal.'));
   }
 
@@ -57,10 +56,9 @@ class StorageView extends React.Component {
         iName={this.props.storageContent[currKey].name}
         iUnit={this.props.storageContent[currKey].unit}
         iQuantity={this.props.storageContent[currKey].quantity}
-        decrementAction={this.props.decrementQuantityForItemAction}
-        incrementAction={this.props.incrementQuantityForItemAction}
+        deleteAction={this.props.deleteAction}
         editAction={this.editItem}
-        removeAction={this.props.removeItemFromStorageAction}
+        updateAction={this.props.updateAction}
       />
     );
   }
@@ -80,7 +78,7 @@ class StorageView extends React.Component {
           <StorageViewNewItem
             itemList={this.props.itemList}
             unitList={this.props.unitList}
-            addAction={this.props.addItemToStorageAction}
+            addAction={this.props.addAction}
           />
         </table>
       </div>

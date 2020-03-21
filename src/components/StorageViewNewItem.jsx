@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { AddMode } from '../constants/enums';
 
 class StorageViewNewItem extends React.Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class StorageViewNewItem extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.addAction(this.state.item, this.state.unit, this.state.quantity);
+    this.props.addAction(AddMode.STORAGE_CONTENT, this.state.item, this.state.unit, this.state.quantity);
     this.setState({item: 0, unit: 0, quantity: 0});
   }
 

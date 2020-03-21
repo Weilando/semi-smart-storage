@@ -19,27 +19,13 @@ class App extends React.Component {
       dummy: true,
     }
 
+    this.add = this.add.bind(this);
+    this.delete = this.delete.bind(this);
+    this.fetch = this.fetch.bind(this);
     this.reload = this.reload.bind(this);
     this.switchDummy = this.switchDummy.bind(this);
     this.switchCurrentStorage = this.switchCurrentStorage.bind(this);
-    this.addItemToStorage = this.addItemToStorage.bind(this);
-    this.decrementQuantityForItem = this.decrementQuantityForItem.bind(this);
-    this.incrementQuantityForItem = this.incrementQuantityForItem.bind(this);
-    this.removeItemFromStorage = this.removeItemFromStorage.bind(this);
-
-    this.addStorage = this.addStorage.bind(this);
-    this.deleteStorage = this.deleteStorage.bind(this);
-    this.updateStorage = this.updateStorage.bind(this);
-    this.addItem = this.addItem.bind(this);
-    this.deleteItem = this.deleteItem.bind(this);
-    this.updateItem = this.updateItem.bind(this);
-    this.addUnit = this.addUnit.bind(this);
-    this.deleteUnit = this.deleteUnit.bind(this);
-    this.updateUnit = this.updateUnit.bind(this);
-    this.addItemToStorage = this.addItemToStorage.bind(this);
-    this.decrementQuantityForItem = this.decrementQuantityForItem.bind(this);
-    this.incrementQuantityForItem = this.incrementQuantityForItem.bind(this);
-    this.removeItemFromStorage = this.removeItemFromStorage.bind(this);
+    this.update = this.update.bind(this);
   }
 
   componentDidMount() {
@@ -77,6 +63,14 @@ class App extends React.Component {
       } else {
         // TODO: add API-request
       }
+    } else if(fetchMode === FetchMode.STORAGE_CONTENT) {
+      const storage = arguments[1];
+      if(this.state.dummy) {
+        console.log('Fetch content of #'.concat(storage.id, ' (', storage.name, ').'));
+        this.setState({currentStorageContent: DummyStorageContent});
+      } else {
+        // TODO: add API-request
+      }
     } else if(fetchMode === FetchMode.STORAGE_LIST) {
       if(this.state.dummy) {
         console.log('Fetch storage-list.');
@@ -85,14 +79,6 @@ class App extends React.Component {
         getAllStorages().then(storages => {
           this.setState({storageList: storages})
         });
-      }
-    } else if(fetchMode === FetchMode.STORAGE_CONTENT) {
-      const storage = arguments[1];
-      if(this.state.dummy) {
-        console.log('Fetch content of #'.concat(storage.id, ' (', storage.name, ').'));
-        this.setState({currentStorageContent: DummyStorageContent});
-      } else {
-        // TODO: add API-request
       }
     } else if(fetchMode === FetchMode.UNIT_LIST)  {
       if(this.state.dummy) {
@@ -108,163 +94,160 @@ class App extends React.Component {
 
 
   // POST methods
-  addStorage(name) {
-    if(this.state.dummy) {
-      console.log('Add new storage: '.concat(name));
-      let newStorageList = this.state.storageList.slice();
-      newStorageList.push({id: this.state.storageList[newStorageList.length-1].id+1, name: name});
-      this.setState({storageList: newStorageList});
-    } else {
-      // TODO: Add api call
-    }
-  }
-
-  updateStorage(updateId, newName) {
-    if(this.state.dummy) {
-      console.log('Update storage #'.concat(updateId, ': new name is ', newName));
-      let newStorageList = this.state.storageList.slice();
-      let updatedIndex = newStorageList.findIndex(x => x.id === updateId);
-      newStorageList[updatedIndex].name = newName;
-      this.setState({storageList: newStorageList});
-    } else {
-      // TODO: Add api call
-    }
-  }
-
-  deleteStorage(deleteId) {
-    if(this.state.dummy) {
-      console.log('Delete storage: #'.concat(deleteId));
-      let newStorageList = this.state.storageList.slice();
-      let deletedIndex = newStorageList.findIndex(x => x.id === deleteId);
-      newStorageList.splice(deletedIndex, 1);
-      this.setState({storageList: newStorageList});
-    } else {
-      // TODO: Add api call
-    }
-  }
-
-  addUnit(name) {
-    if(this.state.dummy) {
-      console.log('Add new unit: '.concat(name));
-      let newUnitList = this.state.unitList.slice();
-      newUnitList.push({id: this.state.unitList[newUnitList.length-1].id+1, name: name});
-      this.setState({unitList: newUnitList});
-    } else {
-      // TODO: Add api call
-    }
-  }
-
-  updateUnit(updateId, newName) {
-    if(this.state.dummy) {
-      console.log('Update unit #'.concat(updateId, ': new name is ', newName));
-      let newUnitList = this.state.unitList.slice();
-      let updatedIndex = newUnitList.findIndex(x => x.id === updateId);
-      newUnitList[updatedIndex].name = newName;
-      this.setState({unitList: newUnitList});
-    } else {
-      // TODO: Add api call
-    }
-  }
-
-  deleteUnit(deleteId) {
-    if(this.state.dummy) {
-      console.log('Delete unit: #'.concat(deleteId));
-      let newUnitList = this.state.unitList.slice();
-      let deletedIndex = newUnitList.findIndex(x => x.id === deleteId);
-      newUnitList.splice(deletedIndex, 1);
-      this.setState({unitList: newUnitList});
-    } else {
-      // TODO: Add api call
-    }
-  }
-
-  addItem(name) {
-    if(this.state.dummy) {
-      console.log('Add new item: '.concat(name));
-      let newItemList = this.state.itemList.slice();
-      newItemList.push({id: this.state.itemList[newItemList.length-1].id+1, name: name});
-      this.setState({itemList: newItemList});
-    } else {
-      // TODO: Add api call
-    }
-  }
-
-  updateItem(updateId, newName) {
-    if(this.state.dummy) {
-      console.log('Update item #'.concat(updateId, ': new name is ', newName));
-      let newItemList = this.state.itemList.slice();
-      let updatedIndex = newItemList.findIndex(x => x.id === updateId);
-      newItemList[updatedIndex].name = newName;
-      this.setState({itemList: newItemList});
-    } else {
-      // TODO: Add api call
-    }
-  }
-
-  deleteItem(deleteId) {
-    if(this.state.dummy) {
-      console.log('Delete item: #'.concat(deleteId));
-      let newItemList = this.state.itemList.slice();
-      let deletedIndex = newItemList.findIndex(x => x.id === deleteId);
-      newItemList.splice(deletedIndex, 1);
-      this.setState({itemList: newItemList});
-    } else {
-      // TODO: Add api call
-    }
-  }
-
-  addItemToStorage(itemId, unitId, quantity) {
-    if(this.state.dummy) {
-      console.log('Add item #'.concat(itemId, ' with quantity ', quantity, ' and unit #', unitId, ' to storage #', this.state.currentStorage.id, '.'));
-      let newCurrentStorage = this.state.currentStorageContent.slice();
-      let newItem = {
-        id: newCurrentStorage[newCurrentStorage.length-1].id+1,
-        name: this.state.itemList.find(x => x.id === itemId).name,
-        unit: this.state.unitList.find(x => x.id === unitId).name,
-        quantity: quantity
-      };
-      newCurrentStorage.push(newItem);
-      this.setState({currentStorageContent: newCurrentStorage});
-    } else {
-      // TODO: Add api call
-    }
-  }
-
-  decrementQuantityForItem(itemId) {
-    if(this.state.dummy) {
-      console.log('Decrement quantity for item #'.concat(itemId, ' from storage #', this.state.currentStorage.id, '.'));
-      let newCurrentStorage = this.state.currentStorageContent.slice();
-      let updatedIndex = newCurrentStorage.findIndex(x => x.id === itemId);
-      if(newCurrentStorage[updatedIndex].quantity>0) {
-        newCurrentStorage[updatedIndex].quantity--;
+  add(addMode, name) {
+    if(addMode === AddMode.ITEM_LIST) {
+      if(this.state.dummy) {
+        console.log('Add new item: '.concat(name));
+        let newItemList = this.state.itemList.slice();
+        newItemList.push({id: this.state.itemList[newItemList.length-1].id+1, name: name});
+        this.setState({itemList: newItemList});
+      } else {
+        // TODO: Add api call
       }
-      this.setState({currentStorageContent: newCurrentStorage});
+    } else if(addMode === AddMode.STORAGE_CONTENT) {
+      if(this.state.dummy) {
+        const itemId = arguments[1]
+        const unitId = arguments[2]
+        const quantity = arguments[3]
+        console.log('Add item #'.concat(itemId, ' with quantity ', quantity, ' and unit #', unitId, ' to storage #', this.state.currentStorage.id, '.'));
+        let newCurrentStorage = this.state.currentStorageContent.slice();
+        const newItem = {
+          id: newCurrentStorage[newCurrentStorage.length-1].id+1,
+          name: this.state.itemList.find(x => x.id === itemId).name,
+          unit: this.state.unitList.find(x => x.id === unitId).name,
+          quantity: quantity
+        };
+        newCurrentStorage.push(newItem);
+        this.setState({currentStorageContent: newCurrentStorage});
+      } else {
+        // TODO: Add api call
+      }
+    } else if(addMode === AddMode.STORAGE_LIST) {
+      if(this.state.dummy) {
+        console.log('Add new storage: '.concat(name));
+        let newStorageList = this.state.storageList.slice();
+        newStorageList.push({id: this.state.storageList[newStorageList.length-1].id+1, name: name});
+        this.setState({storageList: newStorageList});
+      } else {
+        // TODO: Add api call
+      }
+    } else if(addMode === AddMode.UNIT_LIST) {
+      if(this.state.dummy) {
+        console.log('Add new unit: '.concat(name));
+        let newUnitList = this.state.unitList.slice();
+        newUnitList.push({id: this.state.unitList[newUnitList.length-1].id+1, name: name});
+        this.setState({unitList: newUnitList});
+      } else {
+        // TODO: Add api call
+      }
     } else {
-      // TODO: Add api call
+      console.log('Invalid add-mode.');
     }
   }
 
-  incrementQuantityForItem(itemId) {
-    if(this.state.dummy) {
-      console.log('Increment quantity for item #'.concat(itemId, ' from storage #', this.state.currentStorage.id, '.'));
-      let newCurrentStorage = this.state.currentStorageContent.slice();
-      let updatedIndex = newCurrentStorage.findIndex(x => x.id === itemId);
-      newCurrentStorage[updatedIndex].quantity++;
-      this.setState({currentStorageContent: newCurrentStorage});
+  delete(deleteMode, deleteId) {
+    if(deleteMode === DeleteMode.ITEM_LIST) {
+      if(this.state.dummy) {
+        console.log('Delete item: #'.concat(deleteId));
+        let newItemList = this.state.itemList.slice();
+        let deletedIndex = newItemList.findIndex(x => x.id === deleteId);
+        newItemList.splice(deletedIndex, 1);
+        this.setState({itemList: newItemList});
+      } else {
+        // TODO: Add api call
+      }
+    } else if(deleteMode === DeleteMode.STORAGE_CONTENT) {
+      if(this.state.dummy) {
+        console.log('Delete item #'.concat(deleteId, ' from storage #', this.state.currentStorage.id, '.'));
+        let newCurrentStorage = this.state.currentStorageContent.slice();
+        let deletedIndex = newCurrentStorage.findIndex(x => x.id === deleteId);
+        newCurrentStorage.splice(deletedIndex, 1);
+        this.setState({currentStorageContent: newCurrentStorage});
+      } else {
+        // TODO: Add api call
+      }
+    } else if(deleteMode === DeleteMode.STORAGE_LIST) {
+      if(this.state.dummy) {
+        console.log('Delete storage: #'.concat(deleteId));
+        let newStorageList = this.state.storageList.slice();
+        let deletedIndex = newStorageList.findIndex(x => x.id === deleteId);
+        newStorageList.splice(deletedIndex, 1);
+        this.setState({storageList: newStorageList});
+      } else {
+        // TODO: Add api call
+      }
+    } else if(deleteMode === DeleteMode.UNIT_LIST) {
+      if(this.state.dummy) {
+        console.log('Delete unit: #'.concat(deleteId));
+        let newUnitList = this.state.unitList.slice();
+        let deletedIndex = newUnitList.findIndex(x => x.id === deleteId);
+        newUnitList.splice(deletedIndex, 1);
+        this.setState({unitList: newUnitList});
+      } else {
+        // TODO: Add api call
+      }
     } else {
-      // TODO: Add api call
+      console.log('Invalid delete-mode.');
     }
   }
 
-  removeItemFromStorage(itemId) {
-    if(this.state.dummy) {
-      console.log('Remove item #'.concat(itemId, ' from storage #', this.state.currentStorage.id, '.'));
-      let newCurrentStorage = this.state.currentStorageContent.slice();
-      let deletedIndex = newCurrentStorage.findIndex(x => x.id === itemId);
-      newCurrentStorage.splice(deletedIndex, 1);
-      this.setState({currentStorageContent: newCurrentStorage});
+  update(updateMode, updateId, newName) {
+    if(updateMode === UpdateMode.ITEM_LIST) {
+      if(this.state.dummy) {
+        console.log('Update item #'.concat(updateId, ': new name is ', newName));
+        let newItemList = this.state.itemList.slice();
+        let updatedIndex = newItemList.findIndex(x => x.id === updateId);
+        newItemList[updatedIndex].name = newName;
+        this.setState({itemList: newItemList});
+      } else {
+        // TODO: Add api call
+      }
+    } else if(updateMode === UpdateMode.STORAGE_CONTENT_DECR) {
+      if(this.state.dummy) {
+        console.log('Decrement quantity for item #'.concat(updateId, ' from storage #', this.state.currentStorage.id, '.'));
+        let newCurrentStorage = this.state.currentStorageContent.slice();
+        let updatedIndex = newCurrentStorage.findIndex(x => x.id === updateId);
+        if(newCurrentStorage[updatedIndex].quantity>0) {
+          newCurrentStorage[updatedIndex].quantity--;
+        }
+        this.setState({currentStorageContent: newCurrentStorage});
+      } else {
+        // TODO: Add api call
+      }
+    } else if(updateMode === UpdateMode.STORAGE_CONTENT_EDIT) {
+
+    } else if(updateMode === UpdateMode.STORAGE_CONTENT_INCR) {
+      if(this.state.dummy) {
+        console.log('Increment quantity for item #'.concat(updateId, ' from storage #', this.state.currentStorage.id, '.'));
+        let newCurrentStorage = this.state.currentStorageContent.slice();
+        let updatedIndex = newCurrentStorage.findIndex(x => x.id === updateId);
+        newCurrentStorage[updatedIndex].quantity++;
+        this.setState({currentStorageContent: newCurrentStorage});
+      } else {
+        // TODO: Add api call
+      }
+    } else if(updateMode === UpdateMode.STORAGE_LIST) {
+      if(this.state.dummy) {
+        console.log('Update storage #'.concat(updateId, ': new name is ', newName));
+        let newStorageList = this.state.storageList.slice();
+        let updatedIndex = newStorageList.findIndex(x => x.id === updateId);
+        newStorageList[updatedIndex].name = newName;
+        this.setState({storageList: newStorageList});
+      } else {
+        // TODO: Add api call
+      }
+    } else if(updateMode === UpdateMode.UNIT_LIST) {
+      if(this.state.dummy) {
+        console.log('Update unit #'.concat(updateId, ': new name is ', newName));
+        let newUnitList = this.state.unitList.slice();
+        let updatedIndex = newUnitList.findIndex(x => x.id === updateId);
+        newUnitList[updatedIndex].name = newName;
+        this.setState({unitList: newUnitList});
+      } else {
+        // TODO: Add api call
+      }
     } else {
-      // TODO: Add api call
+      console.log('Invalid update-mode.');
     }
   }
 
@@ -277,14 +260,11 @@ class App extends React.Component {
           itemList={this.state.itemList}
           unitList={this.state.unitList}
           dummy={this.state.dummy}
-          switchDummyAction={this.switchDummy}
+          addAction={this.add}
+          deleteAction={this.delete}
           reloadAction={this.reload}
-          addItemAction={this.addItem}
-          addUnitAction={this.addUnit}
-          deleteItemAction={this.deleteItem}
-          deleteUnitAction={this.deleteUnit}
-          updateItemAction={this.updateItem}
-          updateUnitAction={this.updateUnit}
+          switchDummyAction={this.switchDummy}
+          updateAction={this.update}
         />
         <Body
           currentStorage={this.state.currentStorage}
@@ -292,14 +272,10 @@ class App extends React.Component {
           storageList={this.state.storageList}
           itemList={this.state.itemList}
           unitList={this.state.unitList}
-          addStorageAction={this.addStorage}
-          deleteStorageAction={this.deleteStorage}
+          addAction={this.add}
+          deleteAction={this.delete}
           switchStorageAction={this.switchCurrentStorage}
-          updateStorageAction={this.updateStorage}
-          addItemToStorageAction={this.addItemToStorage}
-          decrementQuantityForItemAction={this.decrementQuantityForItem}
-          incrementQuantityForItemAction={this.incrementQuantityForItem}
-          removeItemFromStorageAction={this.removeItemFromStorage}
+          updateAction={this.update}
         />
       </div>
     );
