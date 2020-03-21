@@ -1,26 +1,21 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { ModalMode } from '../../constants/modal';
 import ModalList from '../../components/ModalList';
 import ModalListItem from '../../components/ModalListItem';
 import ModalListNewItem from '../../components/ModalListNewItem';
+import { ModalMode } from '../../constants/enums';
+import { DummyItemListShort, DummyUnitListShort } from '../../constants/dummyData';
 
 describe('snapshot tests for ModalList component', () => {
   it('should render visible ModalList component for items correctly', () => {
-    const itemList = [
-      {id: 0, name: "Sparkling water"},
-      {id: 1, name: "Apple juice"},
-      {id: 3, name: "Milk"},
-    ];
     const addAction = jest.fn();
     const closeAction = jest.fn();
     const editAction = jest.fn();
 
-
     const tree = renderer.create(
       <ModalList
         show={true}
-        list={itemList}
+        list={DummyItemListShort}
         mode={ModalMode.ITEM}
         addAction={addAction}
         closeAction={closeAction}
@@ -32,20 +27,14 @@ describe('snapshot tests for ModalList component', () => {
   })
 
   it('should render hidden ModalEdit component for units correctly', () => {
-    const unitList = [
-      {id: 1, name: "0.5L"},
-      {id: 2, name: "0.75L"},
-      {id: 3, name: "1.0L"}
-    ];
     const addAction = jest.fn();
     const closeAction = jest.fn();
     const editAction = jest.fn();
 
-
     const tree = renderer.create(
       <ModalList
         show={false}
-        list={unitList}
+        list={DummyUnitListShort}
         mode={ModalMode.ITEM}
         addAction={addAction}
         closeAction={closeAction}

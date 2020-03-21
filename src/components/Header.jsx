@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ModalEdit from './ModalEdit';
 import ModalSettings from './ModalSettings';
 import ModalList from './ModalList';
-import { ModalMode } from '../constants/modal';
+import { ModalMode } from '../constants/enums';
 import '../styles/Header.css';
 
 class Header extends React.Component {

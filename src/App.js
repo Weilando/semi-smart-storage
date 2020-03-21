@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Body from './components/Body';
 import Header from './components/Header';
+import { AddMode, DeleteMode, FetchMode, UpdateMode} from './constants/enums';
+import { DummyItemList, DummyStorageContent, DummyStorageList, DummyUnitList } from './constants/dummyData';
 import { getAllStorages } from './services/StorageService';
 
 class App extends React.Component {
@@ -17,10 +19,6 @@ class App extends React.Component {
       dummy: true,
     }
 
-    this.fetchStorageList = this.fetchStorageList.bind(this);
-    this.fetchItemList = this.fetchItemList.bind(this);
-    this.fetchUnitList = this.fetchUnitList.bind(this);
-    this.fetchStorageContent = this.fetchStorageContent.bind(this);
     this.reload = this.reload.bind(this);
     this.switchDummy = this.switchDummy.bind(this);
     this.switchCurrentStorage = this.switchCurrentStorage.bind(this);
@@ -49,9 +47,9 @@ class App extends React.Component {
   }
 
   reload() {
-    this.fetchStorageList();
-    this.fetchItemList();
-    this.fetchUnitList();
+    this.fetch(FetchMode.STORAGE_LIST);
+    this.fetch(FetchMode.ITEM_LIST);
+    this.fetch(FetchMode.UNIT_LIST);
     this.switchCurrentStorage(this.state.storageList[0]);
   }
 
@@ -66,65 +64,45 @@ class App extends React.Component {
 
   switchCurrentStorage(storage) {
     this.setState({currentStorage: storage});
-    this.fetchStorageContent(storage);
+    this.fetch(FetchMode.STORAGE_CONTENT, storage);
   }
 
 
   // GET methods
-  fetchStorageList() {
-    if(this.state.dummy) {
-      console.log('Fetch storage-list.');
-      this.setState({storageList: [
-        {id: 0, name: 'Fridge'}, {id: 1, name: 'Basement'}
-      ]});
+  fetch(fetchMode) {
+    if(fetchMode === FetchMode.ITEM_LIST) {
+      if(this.state.dummy) {
+        console.log('Fetch item-list.');
+        this.setState({itemList: DummyItemList});
+      } else {
+        // TODO: add API-request
+      }
+    } else if(fetchMode === FetchMode.STORAGE_LIST) {
+      if(this.state.dummy) {
+        console.log('Fetch storage-list.');
+        this.setState({storageList: DummyStorageList});
+      } else {
+        getAllStorages().then(storages => {
+          this.setState({storageList: storages})
+        });
+      }
+    } else if(fetchMode === FetchMode.STORAGE_CONTENT) {
+      const storage = arguments[1];
+      if(this.state.dummy) {
+        console.log('Fetch content of #'.concat(storage.id, ' (', storage.name, ').'));
+        this.setState({currentStorageContent: DummyStorageContent});
+      } else {
+        // TODO: add API-request
+      }
+    } else if(fetchMode === FetchMode.UNIT_LIST)  {
+      if(this.state.dummy) {
+        console.log('Fetch unit-list.');
+        this.setState({unitList: DummyUnitList});
+      } else {
+        // TODO: add API-request
+      }
     } else {
-      getAllStorages().then(storages => {
-        this.setState({storageList: storages})
-      });
-    }
-  }
-
-  fetchItemList() {
-    if(this.state.dummy) {
-      console.log('Fetch item-list.');
-      this.setState({itemList: [
-        {id: 0, name: "Sparkling water"},
-        {id: 1, name: "Apple juice"},
-        {id: 2, name: "Craft beer"},
-        {id: 3, name: "Milk"},
-        {id: 5, name: "Coke"}
-      ]});
-    } else {
-      // TODO: add API-request
-    }
-  }
-
-  fetchUnitList() {
-    if(this.state.dummy) {
-      console.log('Fetch unit-list.');
-      this.setState({unitList: [
-        {id: 0, name: "0.33L"},
-        {id: 1, name: "0.5L"},
-        {id: 2, name: "0.75L"},
-        {id: 3, name: "1.0L"}
-      ]});
-    } else {
-      // TODO: add API-request
-    }
-  }
-
-  fetchStorageContent(storage) {
-    if(this.state.dummy) {
-      console.log('Fetch content of #'.concat(storage.id, ' (', storage.name, ').'));
-      this.setState({currentStorageContent: [
-        {id: 0, name: "Milk", unit: "1L", quantity: 2.7},
-        {id: 1, name: "Coke", unit: "0.33L", quantity: 5},
-        {id: 2, name: "Apple juice", unit: "0.5L", quantity: 2},
-        {id: 4, name: "Craft Beer", unit: "0.33L", quantity: 6},
-        {id: 5, name: "Sparkling water", unit: "0.75L", quantity: 21}
-      ]});
-    } else {
-      // TODO: add API-request
+      console.log('Invalid fetch-mode.');
     }
   }
 

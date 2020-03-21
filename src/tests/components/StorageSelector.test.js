@@ -3,13 +3,10 @@ import renderer from 'react-test-renderer';
 import StorageSelector from '../../components/StorageSelector';
 import StorageSelectorItem from '../../components/StorageSelectorItem';
 import StorageSelectorNewItem from '../../components/StorageSelectorNewItem';
+import { DummyStorageListShort } from '../../constants/dummyData';
 
 describe('snapshot tests for StorageSelector component', () => {
   it('should render initial StorageSelector component correctly', () => {
-    const storageList = [
-      {id: 0, name: 'Fridge'},
-      {id: 1, name: 'Basement'}
-    ];
     const addAction = jest.fn();
     const deleteAction = jest.fn();
     const switchStorageAction = jest.fn();
@@ -17,8 +14,8 @@ describe('snapshot tests for StorageSelector component', () => {
 
     const tree = renderer.create(
       <StorageSelector
-        currentStorage={storageList[0]}
-        storageList={storageList}
+        currentStorage={DummyStorageListShort[0]}
+        storageList={DummyStorageListShort}
         addAction={addAction}
         deleteAction={deleteAction}
         switchAction={switchStorageAction}
@@ -68,11 +65,9 @@ describe('snapshot tests for StorageSelectorItem component', () => {
 
 describe('snapshot tests for StorageSelectorNewItem component', () => {
   it('should render initial StorageSelectorNewItem component correctly', () => {
-    const addAction = jest.fn();
-
     const tree = renderer.create(
       <StorageSelectorNewItem
-        addStorage={addAction}
+        addStorage={jest.fn()}
       />
     ).toJSON();
 

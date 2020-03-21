@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { ModalMode } from '../../constants/modal';
+import { ModalMode } from '../../constants/enums';
 import ModalEdit from '../../components/ModalEdit';
 
 describe('snapshot tests for ModalEdit component', () => {

@@ -4,7 +4,7 @@ import '../styles/StorageSelector.css';
 import StorageSelectorItem from './StorageSelectorItem';
 import StorageSelectorNewItem from './StorageSelectorNewItem';
 import ModalEdit from './ModalEdit';
-import { ModalMode } from '../constants/modal';
+import { ModalMode } from '../constants/enums';
 
 class StorageSelector extends React.Component {
   constructor(props) {

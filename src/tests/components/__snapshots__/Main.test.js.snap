@@ -258,9 +258,9 @@ exports[`snapshot tests for Body component should render Body component correctl
               onChange={[Function]}
             >
               <option
-                value={1}
+                value={0}
               >
-                0.5L
+                0.33L
               </option>
               <option
                 value={2}
@@ -459,7 +459,7 @@ exports[`snapshot tests for Header component should render Header component corr
             className="Block"
           >
             <p>
-              0.5L
+              0.33L
             </p>
           </button>
           <button

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ModalListItem from './ModalListItem';
 import ModalListNewItem from './ModalListNewItem';
-import { ModalMode } from '../constants/modal';
+import { ModalMode } from '../constants/enums';
 import '../styles/Modal.css';
 
 function unpackList(list, editAction) {

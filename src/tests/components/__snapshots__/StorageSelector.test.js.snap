@@ -17,7 +17,7 @@ exports[`snapshot tests for StorageSelector component should render initial Stor
         <p
           className="Active"
         >
-          Fridge
+          Basement
         </p>
       </button>
       <button
@@ -37,7 +37,7 @@ exports[`snapshot tests for StorageSelector component should render initial Stor
         <p
           className=""
         >
-          Basement
+          Fridge
         </p>
       </button>
       <button

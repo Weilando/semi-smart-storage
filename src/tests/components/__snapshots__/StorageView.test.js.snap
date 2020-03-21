@@ -63,43 +63,6 @@ exports[`snapshot tests for StorageView component should render StorageView comp
       </tr>
       <tr>
         <td>
-          Coke
-        </td>
-        <td>
-          0.33L
-        </td>
-        <td>
-          5
-        </td>
-        <td>
-          <button
-            className="StorageView"
-            onClick={[Function]}
-          >
-            -
-          </button>
-          <button
-            className="StorageView"
-            onClick={[Function]}
-          >
-            +
-          </button>
-          <button
-            className="StorageView"
-            onClick={[Function]}
-          >
-            Edit
-          </button>
-          <button
-            className="StorageView"
-            onClick={[Function]}
-          >
-            Remove
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
           Sparkling water
         </td>
         <td>
@@ -159,11 +122,6 @@ exports[`snapshot tests for StorageView component should render StorageView comp
             >
               Milk
             </option>
-            <option
-              value={5}
-            >
-              Coke
-            </option>
           </select>
         </td>
         <td>
@@ -176,11 +134,6 @@ exports[`snapshot tests for StorageView component should render StorageView comp
               value={0}
             >
               0.33L
-            </option>
-            <option
-              value={1}
-            >
-              0.5L
             </option>
             <option
               value={2}
@@ -357,19 +310,9 @@ exports[`snapshot tests for StorageViewNewItem component should render StorageVi
           Apple juice
         </option>
         <option
-          value={2}
-        >
-          Craft beer
-        </option>
-        <option
           value={3}
         >
           Milk
-        </option>
-        <option
-          value={5}
-        >
-          Coke
         </option>
       </select>
     </td>
@@ -385,12 +328,12 @@ exports[`snapshot tests for StorageViewNewItem component should render StorageVi
           0.33L
         </option>
         <option
-          value={1}
+          value={2}
         >
-          0.5L
+          0.75L
         </option>
         <option
-          value={2}
+          value={3}
         >
           1.0L
         </option>

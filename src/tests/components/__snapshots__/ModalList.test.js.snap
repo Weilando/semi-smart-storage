@@ -32,7 +32,7 @@ exports[`snapshot tests for ModalList component should render hidden ModalEdit c
           className="Block"
         >
           <p>
-            0.5L
+            0.33L
           </p>
         </button>
         <button
