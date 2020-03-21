@@ -19,6 +19,7 @@ class StorageViewNewItem extends React.Component {
   }
 
   static propTypes = {
+    storageId: PropTypes.number.isRequired,
     itemList: PropTypes.arrayOf(
       PropTypes.shape(
         {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
@@ -48,7 +49,7 @@ class StorageViewNewItem extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.addAction(AddMode.STORAGE_CONTENT, this.state.item, this.state.unit, this.state.quantity);
+    this.props.addAction(AddMode.STORAGE_CONTENT, this.state.item, this.state.unit, this.state.quantity, this.props.storageId);
     this.setState({item: 0, unit: 0, quantity: 0});
   }
 
@@ -60,7 +61,6 @@ class StorageViewNewItem extends React.Component {
       <option
         key={this.props.itemList[currKey].id}
         value={this.props.itemList[currKey].id}
-
       >
         {this.props.itemList[currKey].name}
       </option>

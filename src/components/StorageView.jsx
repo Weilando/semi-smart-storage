@@ -56,6 +56,7 @@ class StorageView extends React.Component {
         iName={this.props.storageContent[currKey].name}
         iUnit={this.props.storageContent[currKey].unit}
         iQuantity={this.props.storageContent[currKey].quantity}
+        storageId={this.props.storage.id}
         deleteAction={this.props.deleteAction}
         editAction={this.editItem}
         updateAction={this.props.updateAction}
@@ -76,6 +77,7 @@ class StorageView extends React.Component {
           </tbody>
 
           <StorageViewNewItem
+            storageId={this.props.storage.id}
             itemList={this.props.itemList}
             unitList={this.props.unitList}
             addAction={this.props.addAction}

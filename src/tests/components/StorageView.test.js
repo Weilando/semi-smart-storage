@@ -62,9 +62,9 @@ describe('snapshot tests for StorageViewHead component', () => {
 
 describe('snapshot tests for StorageViewItem component', () => {
   it('should render StorageViewItem component correctly', () => {
+    const deleteAction = jest.fn();
     const editAction = jest.fn();
-    const decrementAction = jest.fn();
-    const incrementAction = jest.fn();
+    const updateAction = jest.fn();
     const removeAction = jest.fn();
 
     const tree = renderer.create(
@@ -73,10 +73,10 @@ describe('snapshot tests for StorageViewItem component', () => {
         iName="Milk"
         iUnit="1L"
         iQuantity={2.5}
-        decrementAction={decrementAction}
-        incrementAction={incrementAction}
+        storageId={3}
+        deleteAction={deleteAction}
         editAction={editAction}
-        removeAction={removeAction}
+        updateAction={updateAction}
       />
     ).toJSON();
 
@@ -88,6 +88,7 @@ describe('snapshot tests for StorageViewNewItem component', () => {
   it('should render empty StorageViewNewItem component correctly', () => {
     const tree = renderer.create(
       <StorageViewNewItem
+        storageId={7}
         addAction={jest.fn()}
         itemList={[]}
         unitList={[]}
@@ -100,6 +101,7 @@ describe('snapshot tests for StorageViewNewItem component', () => {
   it('should render StorageViewNewItem component with units and items correctly', () => {
     const tree = renderer.create(
       <StorageViewNewItem
+        storageId={7}
         addAction={jest.fn()}
         itemList={DummyItemListShort}
         unitList={DummyUnitListShort}
