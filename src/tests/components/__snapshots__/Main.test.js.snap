@@ -303,6 +303,12 @@ exports[`snapshot tests for Header component should render Header component corr
 >
   <button
     className="Header"
+    onClick={[MockFunction]}
+  >
+    Reload
+  </button>
+  <button
+    className="Header"
     onClick={[Function]}
   >
     Settings
@@ -535,9 +541,18 @@ exports[`snapshot tests for Header component should render Header component corr
       <h1>
         Settings
       </h1>
+      <h2>
+        Click-dummy
+      </h2>
       <p>
-        Settings may be added later.
+        This option enables fake-data to showcase the UI. Neither an active network connection, nor a running backend are necessary. Changes are not persistent.
       </p>
+      <button
+        name="toggle"
+        onClick={[MockFunction]}
+      >
+        Switch click-dummy off
+      </button>
     </div>
   </div>
   <div

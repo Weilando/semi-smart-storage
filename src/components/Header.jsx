@@ -52,6 +52,9 @@ class Header extends React.Component {
         {id: PropTypes.number.isRequired, name: PropTypes.string.isRequired}
       )
     ).isRequired,
+    dummy: PropTypes.bool.isRequired,
+    switchDummyAction: PropTypes.func.isRequired,
+    reloadAction: PropTypes.func.isRequired,
     addItemAction: PropTypes.func.isRequired,
     addUnitAction: PropTypes.func.isRequired,
     deleteItemAction: PropTypes.func.isRequired,
@@ -187,8 +190,10 @@ class Header extends React.Component {
   generateSettingsModal() {
     return(
       <ModalSettings
+        dummy={this.props.dummy}
         show={this.state.settingsShow}
         closeAction={this.closeSettingsModal}
+        switchDummyAction={this.props.switchDummyAction}
       />
     );
   }
@@ -201,6 +206,9 @@ class Header extends React.Component {
 
     return (
       <div className="Header">
+        <button className="Header" onClick={this.props.reloadAction}>
+          Reload
+        </button>
         <button className="Header" onClick={this.showSettingsModal}>
           Settings
         </button>
@@ -210,6 +218,7 @@ class Header extends React.Component {
         <button className="Header" onClick={this.showItemListModal}>
           Items
         </button>
+
         <h1 className="Header">SemiSmartStorage</h1>
 
         {itemListModal}

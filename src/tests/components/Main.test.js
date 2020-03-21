@@ -66,6 +66,8 @@ describe('snapshot tests for Header component', () => {
       {id: 2, name: "0.75L"},
       {id: 3, name: "1.0L"}
     ];
+    const reloadAction = jest.fn();
+    const switchDummyAction = jest.fn();
     const addItemAction = jest.fn();
     const addUnitAction = jest.fn();
     const deleteItemAction = jest.fn();
@@ -77,6 +79,9 @@ describe('snapshot tests for Header component', () => {
       <Header
         itemList={itemList}
         unitList={unitList}
+        dummy={true}
+        reloadAction={reloadAction}
+        switchDummyAction={switchDummyAction}
         addItemAction={addItemAction}
         addUnitAction={addUnitAction}
         deleteItemAction={deleteItemAction}
