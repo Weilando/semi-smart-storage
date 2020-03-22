@@ -1,11 +1,49 @@
 /*
 * This scipt adds a little set of entries to your database.
 * Call it with
-* sqlite3 db_3D.db < insert-data.sql
+* sqlite3 db_3S.db < insert-data.sql
 *
 * Attention: This script does not check, if entries already exist or if the tables exist!
 * Please run create-tables.sql first.
 */
+
+INSERT INTO Content(itemId, unitId, quantity, storageId) VALUES
+  (1, 10, 0.8, 1),
+  (2, 1, 7, 1),
+  (12, 3, 3.5, 1),
+  (10, 12, 0.75, 1),
+  (5, 1, 2, 1),
+  (3, 1, 15, 1),
+  (6, 1, 7, 1),
+  (7, 1, 4, 1),
+  (17, 10, 21, 2),
+  (18, 8, 3, 2),
+  (20, 6, 14, 2),
+  (16, 2, 3, 2);
+
+INSERT INTO Item(id, name) VALUES
+  (1, 'Milk'),
+  (2, 'Egg'),
+  (3, 'Falafel'),
+  (4, 'Hummus'),
+  (5, 'Butter'),
+  (6, 'Slice of ham'),
+  (7, 'Sclice of salami'),
+  (8, 'Cherry jam'),
+  (9, 'Peach jam'),
+  (10, 'Raspberry jam'),
+  (11, 'Strawberry jam'),
+  (12, 'Yoghurt'),
+  (13, 'Chocolate pudding'),
+  (14, 'Vanilla pudding'),
+  (15, 'Chicken breast'),
+  (16, 'Ground meat'),
+  (17, 'Sparkling water'),
+  (18, 'Apple juice'),
+  (19, 'Orange juice'),
+  (20, 'Beer');
+
+INSERT INTO Storage(id, name) VALUES (1, 'Fridge'), (2, 'Basement');
 
 INSERT INTO Unit(id, name) VALUES
   (1, '1 piece'),
@@ -22,40 +60,3 @@ INSERT INTO Unit(id, name) VALUES
   (12, '150ml jar'),
   (13, '250ml jar'),
   (14, '500ml jar');
-
-INSERT INTO Storage(id, name) VALUES (1, 'Fridge'), (2, 'Basement');
-
-INSERT INTO Item(id, name, unitId) VALUES
-  (1, 'Milk', 11),
-  (2, 'Egg', 1),
-  (3, 'Falafel', 1),
-  (4, 'Hummus', 2),
-  (5, 'Butter', 1),
-  (6, 'Slice of ham', 1),
-  (7, 'Sclice of salami', 1),
-  (8, 'Cherry jam', 13),
-  (9, 'Peach jam', 13),
-  (10, 'Raspberry jam', 13),
-  (11, 'Strawberry jam', 13),
-  (12, 'Yoghurt', 14),
-  (13, 'Chocolate pudding', 12),
-  (14, 'Vanilla pudding', 12),
-  (15, 'Chicken breast', 2),
-  (16, 'Ground meat', 3),
-  (17, 'Sparkling water', 9),
-  (18, 'Beer', 6),
-  (19, 'Apple juice', 9),
-  (20, 'Orange juice', 11);
-
-INSERT INTO isIn(storageId, itemId, quantity) VALUES
-  (1, 1, 0.8),
-  (1, 2, 7),
-  (1, 12, 3.5),
-  (1, 10, 0.75),
-  (1, 5, 1),
-  (1, 3, 5),
-  (1, 6, 3),
-  (1, 7, 4),
-  (2, 17, 21),
-  (2, 18, 8),
-  (2, 19, 2);
