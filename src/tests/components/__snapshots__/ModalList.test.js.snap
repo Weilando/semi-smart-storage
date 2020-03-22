@@ -1,0 +1,246 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot tests for ModalList component should render hidden ModalEdit component for units correctly 1`] = `
+<div
+  className="modal hide"
+>
+  <div
+    className="modal-main"
+  >
+    <span
+      className="close"
+      onClick={[MockFunction]}
+    >
+      ×
+    </span>
+    <h1>
+      Settings for 
+      item
+    </h1>
+    <p>
+      Click the edit-button next to the 
+      item
+       you want to edit and perform your changes.
+    </p>
+    <ul
+      className="Modal"
+    >
+      <li
+        className="Modal"
+      >
+        <button
+          className="Block"
+        >
+          <p>
+            0.33L
+          </p>
+        </button>
+        <button
+          className="Round"
+          onClick={[Function]}
+        >
+          i
+        </button>
+      </li>
+      <li
+        className="Modal"
+      >
+        <button
+          className="Block"
+        >
+          <p>
+            0.75L
+          </p>
+        </button>
+        <button
+          className="Round"
+          onClick={[Function]}
+        >
+          i
+        </button>
+      </li>
+      <li
+        className="Modal"
+      >
+        <button
+          className="Block"
+        >
+          <p>
+            1.0L
+          </p>
+        </button>
+        <button
+          className="Round"
+          onClick={[Function]}
+        >
+          i
+        </button>
+      </li>
+      <li
+        className="Modal"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <input
+            className="ModalList"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+          <input
+            className="ModalList"
+            disabled={true}
+            type="submit"
+            value="Add"
+          />
+        </form>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`snapshot tests for ModalList component should render visible ModalList component for items correctly 1`] = `
+<div
+  className="modal show"
+>
+  <div
+    className="modal-main"
+  >
+    <span
+      className="close"
+      onClick={[MockFunction]}
+    >
+      ×
+    </span>
+    <h1>
+      Settings for 
+      item
+    </h1>
+    <p>
+      Click the edit-button next to the 
+      item
+       you want to edit and perform your changes.
+    </p>
+    <ul
+      className="Modal"
+    >
+      <li
+        className="Modal"
+      >
+        <button
+          className="Block"
+        >
+          <p>
+            Sparkling water
+          </p>
+        </button>
+        <button
+          className="Round"
+          onClick={[Function]}
+        >
+          i
+        </button>
+      </li>
+      <li
+        className="Modal"
+      >
+        <button
+          className="Block"
+        >
+          <p>
+            Apple juice
+          </p>
+        </button>
+        <button
+          className="Round"
+          onClick={[Function]}
+        >
+          i
+        </button>
+      </li>
+      <li
+        className="Modal"
+      >
+        <button
+          className="Block"
+        >
+          <p>
+            Milk
+          </p>
+        </button>
+        <button
+          className="Round"
+          onClick={[Function]}
+        >
+          i
+        </button>
+      </li>
+      <li
+        className="Modal"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <input
+            className="ModalList"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+          <input
+            className="ModalList"
+            disabled={true}
+            type="submit"
+            value="Add"
+          />
+        </form>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`snapshot tests for ModalListItem component should render ModalListItem component correctly 1`] = `
+<li
+  className="Modal"
+>
+  <button
+    className="Block"
+  >
+    <p>
+      Sparkling water
+    </p>
+  </button>
+  <button
+    className="Round"
+    onClick={[Function]}
+  >
+    i
+  </button>
+</li>
+`;
+
+exports[`snapshot tests for ModalListNewItem component should render ModalListNewItem component correctly 1`] = `
+<li
+  className="Modal"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      className="ModalList"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <input
+      className="ModalList"
+      disabled={true}
+      type="submit"
+      value="Add"
+    />
+  </form>
+</li>
+`;
