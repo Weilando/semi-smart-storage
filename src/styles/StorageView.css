@@ -1,7 +1,7 @@
 div.StorageView {
   display: inline-block;
   vertical-align: top;
-  height: 98%;
+  height: 99%;
   width: 74%;
   border: 1px solid orange;
   overflow-x: scroll;
@@ -11,16 +11,33 @@ div.StorageView {
 }
 
 table.StorageView {
-  border: 1px solid black;
   width: 100%;
+  border: none;
+}
+
+table.StorageView tbody tr:nth-child(even) {
+  background-color: beige;
+}
+
+table.StorageView tbody tr:nth-child(odd) {
+  background-color: lightblue;
+}
+
+table.StorageView tfoot {
+  background-color: grey;
+}
+
+table.StorageView thead {
+  background-color: blue;
+  color: white;
+}
+
+table.StorageView input[type="submit"] {
+  margin-left: 1em;
 }
 
 button.StorageView {
   margin: 0.2em;
   border-style: none;
   background-color: white;
-}
-
-tr:nth-child(even) {
-  background-color: beige;
 }

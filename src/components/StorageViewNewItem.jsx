@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AddMode } from '../constants/enums';
+import '../styles/StorageView.css';
 
 class StorageViewNewItem extends React.Component {
   constructor(props) {
@@ -97,18 +98,17 @@ class StorageViewNewItem extends React.Component {
               {unitOptions}
             </select>
           </td>
-          <td>
-            <input
-              type="number"
-              min="0"
-              value={this.state.quantity}
-              onChange={this.handleQuantityChange}
-            />
-          </td>
-          <td>
-            <button onClick={this.handleSubmit} disabled={this.state.quantity === ''}>
-              Add
-            </button>
+          <td colSpan="2">
+            <form onSubmit={this.handleSubmit}>
+              <input type="number"
+                min="0" step="0.05"
+                value={this.state.quantity}
+                onChange={this.handleQuantityChange}
+              />
+              <input type="submit" value="Add"
+                disabled={this.state.quantity === ''}
+              />
+            </form>
           </td>
         </tr>
       </tfoot>

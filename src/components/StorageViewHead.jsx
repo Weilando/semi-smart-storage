@@ -1,13 +1,14 @@
 import React from 'react';
+import '../styles/StorageView.css';
 
 function StorageViewHead(props) {
   return (
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Unit</th>
-        <th>Quantity</th>
-        <th>Options</th>
+        <th width="50%">Name</th>
+        <th width="20%">Unit</th>
+        <th width="20%">Quantity</th>
+        <th width="10%">Options</th>
       </tr>
     </thead>
   );

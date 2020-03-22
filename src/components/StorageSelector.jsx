@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../styles/StorageSelector.css';
 import StorageSelectorItem from './StorageSelectorItem';
 import StorageSelectorNewItem from './StorageSelectorNewItem';
 import ModalEdit from './ModalEdit';
 import { DeleteMode, UpdateMode } from '../constants/enums';
 import { ModalMode } from '../constants/enums';
+import '../styles/StorageSelector.css';
 
 class StorageSelector extends React.Component {
   constructor(props) {

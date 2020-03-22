@@ -9,16 +9,24 @@ exports[`snapshot tests for StorageView component should render StorageView comp
   >
     <thead>
       <tr>
-        <th>
+        <th
+          width="50%"
+        >
           Name
         </th>
-        <th>
+        <th
+          width="20%"
+        >
           Unit
         </th>
-        <th>
+        <th
+          width="20%"
+        >
           Quantity
         </th>
-        <th>
+        <th
+          width="10%"
+        >
           Options
         </th>
       </tr>
@@ -149,21 +157,25 @@ exports[`snapshot tests for StorageView component should render StorageView comp
             </option>
           </select>
         </td>
-        <td>
-          <input
-            min="0"
-            onChange={[Function]}
-            type="number"
-            value={0}
-          />
-        </td>
-        <td>
-          <button
-            disabled={false}
-            onClick={[Function]}
+        <td
+          colSpan="2"
+        >
+          <form
+            onSubmit={[Function]}
           >
-            Add
-          </button>
+            <input
+              min="0"
+              onChange={[Function]}
+              step="0.05"
+              type="number"
+              value={0}
+            />
+            <input
+              disabled={false}
+              type="submit"
+              value="Add"
+            />
+          </form>
         </td>
       </tr>
     </tfoot>
@@ -191,7 +203,7 @@ exports[`snapshot tests for StorageView component should render StorageView comp
           className="Modal"
           min="0"
           onChange={[Function]}
-          step="0.1"
+          step="0.05"
           type="number"
           value={0}
         />
@@ -215,16 +227,24 @@ exports[`snapshot tests for StorageView component should render empty StorageVie
   >
     <thead>
       <tr>
-        <th>
+        <th
+          width="50%"
+        >
           Name
         </th>
-        <th>
+        <th
+          width="20%"
+        >
           Unit
         </th>
-        <th>
+        <th
+          width="20%"
+        >
           Quantity
         </th>
-        <th>
+        <th
+          width="10%"
+        >
           Options
         </th>
       </tr>
@@ -246,21 +266,25 @@ exports[`snapshot tests for StorageView component should render empty StorageVie
             onChange={[Function]}
           />
         </td>
-        <td>
-          <input
-            min="0"
-            onChange={[Function]}
-            type="number"
-            value={0}
-          />
-        </td>
-        <td>
-          <button
-            disabled={false}
-            onClick={[Function]}
+        <td
+          colSpan="2"
+        >
+          <form
+            onSubmit={[Function]}
           >
-            Add
-          </button>
+            <input
+              min="0"
+              onChange={[Function]}
+              step="0.05"
+              type="number"
+              value={0}
+            />
+            <input
+              disabled={false}
+              type="submit"
+              value="Add"
+            />
+          </form>
         </td>
       </tr>
     </tfoot>
@@ -288,7 +312,7 @@ exports[`snapshot tests for StorageView component should render empty StorageVie
           className="Modal"
           min="0"
           onChange={[Function]}
-          step="0.1"
+          step="0.05"
           type="number"
           value={0}
         />
@@ -306,16 +330,24 @@ exports[`snapshot tests for StorageView component should render empty StorageVie
 exports[`snapshot tests for StorageViewHead component should render StorageViewHead component correctly 1`] = `
 <thead>
   <tr>
-    <th>
+    <th
+      width="50%"
+    >
       Name
     </th>
-    <th>
+    <th
+      width="20%"
+    >
       Unit
     </th>
-    <th>
+    <th
+      width="20%"
+    >
       Quantity
     </th>
-    <th>
+    <th
+      width="10%"
+    >
       Options
     </th>
   </tr>
@@ -453,21 +485,25 @@ exports[`snapshot tests for StorageViewNewItem component should render StorageVi
         </option>
       </select>
     </td>
-    <td>
-      <input
-        min="0"
-        onChange={[Function]}
-        type="number"
-        value={0}
-      />
-    </td>
-    <td>
-      <button
-        disabled={false}
-        onClick={[Function]}
+    <td
+      colSpan="2"
+    >
+      <form
+        onSubmit={[Function]}
       >
-        Add
-      </button>
+        <input
+          min="0"
+          onChange={[Function]}
+          step="0.05"
+          type="number"
+          value={0}
+        />
+        <input
+          disabled={false}
+          type="submit"
+          value="Add"
+        />
+      </form>
     </td>
   </tr>
 </tfoot>
@@ -490,21 +526,25 @@ exports[`snapshot tests for StorageViewNewItem component should render empty Sto
         onChange={[Function]}
       />
     </td>
-    <td>
-      <input
-        min="0"
-        onChange={[Function]}
-        type="number"
-        value={0}
-      />
-    </td>
-    <td>
-      <button
-        disabled={false}
-        onClick={[Function]}
+    <td
+      colSpan="2"
+    >
+      <form
+        onSubmit={[Function]}
       >
-        Add
-      </button>
+        <input
+          min="0"
+          onChange={[Function]}
+          step="0.05"
+          type="number"
+          value={0}
+        />
+        <input
+          disabled={false}
+          type="submit"
+          value="Add"
+        />
+      </form>
     </td>
   </tr>
 </tfoot>

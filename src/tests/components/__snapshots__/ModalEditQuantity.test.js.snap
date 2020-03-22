@@ -24,7 +24,7 @@ exports[`snapshot tests for ModalEditQuantity component should render hidden Mod
         className="Modal"
         min="0"
         onChange={[MockFunction]}
-        step="0.1"
+        step="0.05"
         type="number"
         value={5}
       />
@@ -62,7 +62,7 @@ exports[`snapshot tests for ModalEditQuantity component should render visible Mo
         className="Modal"
         min="0"
         onChange={[MockFunction]}
-        step="0.1"
+        step="0.05"
         type="number"
         value={5}
       />
