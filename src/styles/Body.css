@@ -1,0 +1,9 @@
+div.Body {
+  background-color: lightgrey;
+  height: 95vh;
+  width: 100vw;
+  min-height: 80px;
+  min-width: 100px;
+  margin: 0;
+  padding: 0;
+}

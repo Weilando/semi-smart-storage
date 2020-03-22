@@ -1,0 +1,74 @@
+div.StorageSelector {
+  display: inline-block;
+  width: 23%;
+  height: 99%;
+  border: 1px solid orange;
+  overflow-x: scroll;
+  margin-right: 0.5%;
+  margin-left: 0;
+  padding-left: 0.2%;
+  padding-right: 0.2%;
+}
+
+ul.StorageSelector {
+  list-style-type: none;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+li.StorageSelector {
+  min-height: 2em;
+  background-color: lightblue;
+  margin: 0.2em;
+  padding: 0.2em;
+}
+
+li.StorageSelector:hover {
+  background-color: lightgreen;
+}
+
+li.StorageSelectorActive {
+  min-height: 2em;
+  background-color: blue;
+  margin: 0.2em;
+  padding: 0.2em;
+}
+
+p.Active {
+  color: white;
+}
+
+input[type="text"].StorageSelector {
+  background-color: transparent;
+  width: 70%;
+  border: none;
+}
+
+input[type="submit"].StorageSelector {
+  float: right;
+  margin-right: 0;
+}
+
+button {
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  float: left;
+  padding: 0.2em;
+}
+
+button.Block {
+  display: block;
+  min-width: 80%;
+  float: left;
+  background-color: transparent;
+  text-align: left;
+}
+
+button.Round {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  float: right;
+}

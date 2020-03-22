@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot tests for ModalEditQuantity component should render hidden ModalEditQuantity component correctly 1`] = `
+<div
+  className="modal hide"
+>
+  <div
+    className="modal-main"
+  >
+    <span
+      className="close"
+      onClick={[MockFunction]}
+    >
+      ×
+    </span>
+    <h1>
+      Change quantity
+    </h1>
+    <form
+      className="Modal"
+      onSubmit={[MockFunction]}
+    >
+      <input
+        className="Modal"
+        min="0"
+        onChange={[MockFunction]}
+        step="0.05"
+        type="number"
+        value={5}
+      />
+      <input
+        className="Modal"
+        type="submit"
+        value="Update quantity"
+      />
+    </form>
+  </div>
+</div>
+`;
+
+exports[`snapshot tests for ModalEditQuantity component should render visible ModalEditQuantity component correctly 1`] = `
+<div
+  className="modal show"
+>
+  <div
+    className="modal-main"
+  >
+    <span
+      className="close"
+      onClick={[MockFunction]}
+    >
+      ×
+    </span>
+    <h1>
+      Change quantity
+    </h1>
+    <form
+      className="Modal"
+      onSubmit={[MockFunction]}
+    >
+      <input
+        className="Modal"
+        min="0"
+        onChange={[MockFunction]}
+        step="0.05"
+        type="number"
+        value={5}
+      />
+      <input
+        className="Modal"
+        type="submit"
+        value="Update quantity"
+      />
+    </form>
+  </div>
+</div>
+`;
