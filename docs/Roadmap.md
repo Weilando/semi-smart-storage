@@ -12,8 +12,9 @@
 
 ## API (via PHP)
 - [x] Create end point offering stored information
-- [ ] Create end point offering an interface to add new entries to the database
-- [ ] Create end point offering an interface to update entries in the database
+- [x] Create end point offering an interface to add new entries to the database
+- [x] Create end point offering an interface to update entries in the database
+- [x] Create end point offering an interface to delete entries from the database
 
 ## Basic styled Front-end
 - [x] Create a stylesheet for the following views
@@ -31,24 +32,24 @@
   - [x] Extend stylesheet to show hover and highlight actually chosen storage
 - [ ] Enable adding new storages
   - [x] Add component offering a textfield (for the name) and a button (for adding the new storage)
-  - [ ] Extend API to create new storages inside the database
-  - [x] Use button to trigger API-request to add the new storage and clear the textfield afterwards
+  - [x] Extend API to create new storages inside the database
+  - [ ] Use button to trigger API-request to add the new storage and clear the textfield afterwards
 - [ ] Enable editing and deleting storages
   - [x] Add modal for editing
-  - [ ] Extend API to alter and delete storages inside the database
-  - [x] Trigger API-requests to alter or delete storages and update the view afterwards
+  - [x] Extend API to alter and delete storages inside the database
+  - [ ] Trigger API-requests to alter or delete storages and update the view afterwards
 
 ## StorageView component
-- [ ] Show existing items
-  - [ ] Fetch all items in the storage selected in the StorageSelector component
+- [x] Show existing items
+  - [x] Fetch all items in the storage selected in the StorageSelector component
   - [x] Create a component based on list items showing the fetched items
 - [ ] Enable adding new storages
   - [x] Add component offering two dropdown-menus (for name and unit), a textfield (for entity) and a button (for adding the new item)
-  - [ ] Extend API to create new items inside the database (related to the chosen storage)
+  - [x] Extend API to create new items inside the database (related to the chosen storage)
   - [ ] Use button to trigger API-request to add the new item and clear the input-fields afterwards
 - [ ] Enable editing and deleting items
   - [x] Extend view-cells as shown in the documentation
-  - [ ] Extend API to alter and delete items inside the database
+  - [x] Extend API to alter and delete items inside the database
   - [ ] Trigger corresponding API-requests to alter or delete items and update the view afterwards
 
 ## SettingsView component
