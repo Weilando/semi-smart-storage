@@ -12,7 +12,7 @@
   }
 
   function getFloatParameter(string $name) {
-    if(!preg_match('/^[0-9]*\.[0-9]+$/', $_REQUEST[$name])) {
+    if(!preg_match('/^[0-9]*(\.)?[0-9]+$/', $_REQUEST[$name])) {
       dieBecause(400, "$name is required and needs to be float.");
     }
     return (float) $_REQUEST[$name];

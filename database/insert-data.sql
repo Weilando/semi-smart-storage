@@ -7,20 +7,6 @@
 * Please run create-tables.sql first.
 */
 
-INSERT INTO Content(itemId, unitId, quantity, storageId) VALUES
-  (1, 10, 0.8, 1),
-  (2, 1, 7, 1),
-  (12, 3, 3.5, 1),
-  (10, 12, 0.75, 1),
-  (5, 1, 2, 1),
-  (3, 1, 15, 1),
-  (6, 1, 7, 1),
-  (7, 1, 4, 1),
-  (17, 10, 21, 2),
-  (18, 8, 3, 2),
-  (20, 6, 14, 2),
-  (16, 2, 3, 2);
-
 INSERT INTO Item(id, name) VALUES
   (1, 'Milk'),
   (2, 'Egg'),
@@ -60,3 +46,17 @@ INSERT INTO Unit(id, name) VALUES
   (12, '150ml jar'),
   (13, '250ml jar'),
   (14, '500ml jar');
+
+INSERT INTO Content(itemId, unitId, quantity, storageId) VALUES
+  (1, 10, 0.8, 1),
+  (2, 1, 7, 1),
+  (12, 3, 3.5, 1),
+  (10, 12, 0.75, 1),
+  (5, 1, 2, 1),
+  (3, 1, 15, 1),
+  (6, 1, 7, 1),
+  (7, 1, 4, 1),
+  (17, 10, 21, 2),
+  (18, 8, 3, 2),
+  (20, 6, 14, 2),
+  (16, 2, 3, 2);

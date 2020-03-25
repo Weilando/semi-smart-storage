@@ -13,34 +13,57 @@
   $type = getStringParameter('type');    // update-action-type parameter
 
   if($type == "CONTENT") {
+    $contentId = getIntParameter('contentId');
     $itemId = getIntParameter('itemId');
-    $storageId = getIntParameter('storageId');
     $quantity = getFloatParameter('quantity');
+    $storageId = getIntParameter('storageId');
+    $unitId = getIntParameter('unitId');
   } else {
     $id = getIntParameter('id');
-    $newName = getStringParameter('name');
+
+    if($type == "QUANTITY_FOR_CONTENT") {
+      $quantity = getFloatParameter('quantity');
+    } elseif(($type == "NAME_FOR_ITEM") || ($type == "NAME_FOR_STORAGE") || ($type == "NAME_FOR_UNIT")) {
+      $newName = getStringParameter('name');
+    }
   }
 
   // generate sql-query
   switch ($type) {
-    case "ITEM":
-      $sql =<<<EOF
-        UPDATE Item SET name=$newName WHERE id=$id;
-      EOF;
-      break;
-    case "STORAGE":
-      $sql =<<<EOF
-        UPDATE Storage SET name=$newName WHERE id=$id;
-      EOF;
-      break;
     case "CONTENT":
       $sql =<<<EOF
-        UPDATE Content SET quantity=$quantity WHERE (id=$itemId AND storageId=$storageId);
+        PRAGMA foreign_keys=ON;
+        UPDATE Content SET itemId=$itemId, quantity=$quantity, storageId=$storageId, unitId=$unitId WHERE id=$contentId;
       EOF;
       break;
-    case "UNIT":
+    case "DECREMENT_QUANTITY_FOR_CONTENT":
       $sql =<<<EOF
-        UPDATE Unit SET name=$newName WHERE id=$id;
+        UPDATE Content SET quantity=quantity-1 WHERE id=$id;
+      EOF;
+      break;
+    case "INCREMENT_QUANTITY_FOR_CONTENT":
+      $sql =<<<EOF
+        UPDATE Content SET quantity=quantity+1 WHERE id=$id;
+      EOF;
+      break;
+    case "NAME_FOR_ITEM":
+      $sql =<<<EOF
+        UPDATE Item SET name="$newName" WHERE id=$id;
+      EOF;
+      break;
+    case "NAME_FOR_STORAGE":
+      $sql =<<<EOF
+        UPDATE Storage SET name="$newName" WHERE id=$id;
+      EOF;
+      break;
+    case "NAME_FOR_UNIT":
+      $sql =<<<EOF
+        UPDATE Unit SET name="$newName" WHERE id=$id;
+      EOF;
+      break;
+    case "QUANTITY_FOR_CONTENT":
+      $sql =<<<EOF
+        UPDATE Content SET quantity=$quantity WHERE id=$id;
       EOF;
       break;
     default:

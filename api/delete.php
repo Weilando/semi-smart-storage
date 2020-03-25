@@ -11,33 +11,32 @@
 
   // get and check parameters
   $type = getStringParameter('type');   // delete-action-type parameter
-
-  if($type == "CONTENT") {
-    $storageId = getIntParameter('storageId');
-    $itemId = getIntParameter('itemId');
-  } else {
-    $id = getIntParameter('id');
-  }
+  $id = getIntParameter('id');
 
   // generate sql-query
   switch ($type) {
+    case "CONTENT":
+      $sql =<<<EOF
+        DELETE FROM Content WHERE id=$id;
+      EOF;
+      break;
     case "ITEM":
       $sql =<<<EOF
+        PRAGMA foreign_keys=ON;
         DELETE FROM Item WHERE id=$id;
       EOF;
       break;
     case "STORAGE":
       $sql =<<<EOF
+        BEGIN TRANSACTION;
+        DELETE FROM Content WHERE storageId=$id;
         DELETE FROM Storage WHERE id=$id;
-      EOF;
-      break;
-    case "CONTENT":
-      $sql =<<<EOF
-        DELETE FROM Content WHERE storageId=$storageId AND itemId=$itemId;
+        COMMIT;
       EOF;
       break;
     case "UNIT":
       $sql =<<<EOF
+        PRAGMA foreign_keys=ON;
         DELETE FROM Unit WHERE id=$id;
       EOF;
       break;

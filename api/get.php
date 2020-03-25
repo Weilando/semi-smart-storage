@@ -23,18 +23,17 @@
         SELECT * from Storage;
       EOF;
       break;
-    case "ALL_ITEMS_IN_STORAGE":
-      $storageId = getIntParameter('storageId');
-      
-      $sql =<<<EOF
-        SELECT Content.id, Item.name AS name, Unit.name AS unit, Content.quantity FROM Content JOIN Item JOIN Unit ON Item.id=Content.itemId AND Unit.id=Content.unitId WHERE Content.storageId=$storageId;
-      EOF;
-      break;
     case "ALL_UNITS":
       $sql =<<<EOF
         SELECT * from Unit;
         EOF;
         break;
+    case "CONTENT_IN_STORAGE":
+      $storageId = getIntParameter('storageId');
+      $sql =<<<EOF
+        SELECT Content.id, Item.name AS name, Unit.name AS unit, Content.quantity FROM Content JOIN Item JOIN Unit ON Item.id=Content.itemId AND Unit.id=Content.unitId WHERE Content.storageId=$storageId;
+      EOF;
+      break;
     default:
       dieBecause(400, 'Invalid request-type.');
   }
@@ -49,7 +48,7 @@
   $ret = $db->query($sql);
 
   // pack fetched data
-  if ($content == 'json') {
+  if (strtolower($content) == 'json') {
     $data = array();
     while($row = $ret->fetchArray(SQLITE3_ASSOC)) {
       array_push($data, $row);

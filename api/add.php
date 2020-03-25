@@ -13,16 +13,22 @@
   $type = getStringParameter('type');   // add-action-type parameter
 
   if($type == "CONTENT") {
-    $storageId = getIntParameter('storageId');
     $itemId = getIntParameter('itemId');
     $unitId = getIntParameter('unitId');
     $quantity = getFloatParameter('quantity');
+    $storageId = getIntParameter('storageId');
   } else {
     $newName = getStringParameter('name');
   }
 
   // generate sql-query
   switch ($type) {
+    case "CONTENT":
+      $sql =<<<EOF
+        PRAGMA foreign_keys=ON;
+        INSERT INTO Content(itemId, unitId, quantity, storageId) VALUES ($itemId, $unitId, $quantity, $storageId);
+      EOF;
+      break;
     case "ITEM":
       $sql =<<<EOF
         INSERT INTO Item (name) VALUES ("$newName");
@@ -31,11 +37,6 @@
     case "STORAGE":
       $sql =<<<EOF
         INSERT INTO Storage (name) VALUES ("$newName");
-      EOF;
-      break;
-    case "CONTENT":
-      $sql =<<<EOF
-        INSERT INTO Content(itemId, unitId, quantity, storageId) VALUES ($itemId, $unitId, $quantity, $storageId);
       EOF;
       break;
     case "UNIT":
