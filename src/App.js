@@ -4,7 +4,10 @@ import Body from './components/Body';
 import Header from './components/Header';
 import DummyService from './services/DummyService';
 import { AddMode, DeleteMode, FetchMode, UpdateMode} from './constants/enums';
-import { getAllStorages } from './services/StorageService';
+import { addContent, decrementQuantityForContent, deleteContent, getContentInStorage, incrementQuantityForContent, updateQuantityForContent } from './services/ContentService';
+import { addItem, deleteItem, getAllItems, updateNameForItem } from './services/ItemService';
+import { addStorage, deleteStorage, getAllStorages, updateNameForStorage } from './services/StorageService';
+import { addUnit, deleteUnit, getAllUnits, updateNameForUnit } from './services/UnitService';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,9 +17,9 @@ class App extends React.Component {
       currentStorage: {id: 0, name: ''},
       currentStorageContent: [],
       storageList: [{id: 0, name: ''}],
-      itemList: [],
-      unitList: [],
-      dummy: true,
+      itemList: [{id: 0, name: ''}],
+      unitList: [{id: 0, name: ''}],
+      dummy: false,
     }
 
     this.dummyService = new DummyService();
@@ -41,11 +44,11 @@ class App extends React.Component {
     await this.switchCurrentStorage(this.state.storageList[0]);
   }
 
-  switchDummy() {
+  async switchDummy() {
     if(this.state.dummy === true) {
-      this.setState({dummy: false})
+      await this.setState({dummy: false})
     } else {
-      this.setState({dummy: true})
+      await this.setState({dummy: true})
     }
     this.reload();
   }
@@ -62,28 +65,34 @@ class App extends React.Component {
       if(this.state.dummy) {
         await this.setState({itemList: this.dummyService.getAllItems()});
       } else {
-        // TODO: add API-request
+        await getAllItems().then(items => {
+          this.setState((prevState, props) => ({itemList: items}))
+        });
       }
     } else if(fetchMode === FetchMode.STORAGE_CONTENT) {
       const storageId = arguments[1];
       if(this.state.dummy) {
         await this.setState({currentStorageContent: this.dummyService.getAllItemsInStorage(storageId)});
       } else {
-        // TODO: add API-request
+        await getContentInStorage(storageId).then(content => {
+          this.setState((prevState, props) => ({currentStorageContent: content}))
+        });
       }
     } else if(fetchMode === FetchMode.STORAGE_LIST) {
       if(this.state.dummy) {
         await this.setState({storageList: this.dummyService.getAllStorages()});
       } else {
-        getAllStorages().then(storages => {
-          this.setState({storageList: storages})
+        await getAllStorages().then(storages => {
+          this.setState((prevState, props) => ({storageList: storages}))
         });
       }
     } else if(fetchMode === FetchMode.UNIT_LIST)  {
       if(this.state.dummy) {
         await this.setState({unitList: this.dummyService.getAllUnits()});
       } else {
-        // TODO: add API-request
+        await getAllUnits().then(units => {
+          this.setState((prevState, props) => ({unitList: units}))
+        });
       }
     } else {
       console.log('Invalid fetch-mode.');
@@ -97,7 +106,7 @@ class App extends React.Component {
       if(this.state.dummy) {
         await this.dummyService.addItem(name);
       } else {
-        // TODO: Add api call
+        await addItem(name);
       }
       await this.fetch(FetchMode.ITEM_LIST);
     } else if(addMode === AddMode.STORAGE_CONTENT) {
@@ -109,21 +118,21 @@ class App extends React.Component {
       if(this.state.dummy) {
         await this.dummyService.addItemToStorage(itemId, unitId, quantity, storageId);
       } else {
-        // TODO: Add api call
+        await addContent(itemId, unitId, quantity, storageId);
       }
       await this.fetch(FetchMode.STORAGE_CONTENT, storageId);
     } else if(addMode === AddMode.STORAGE_LIST) {
       if(this.state.dummy) {
         await this.dummyService.addStorage(name);
       } else {
-        // TODO: Add api call
+        await addStorage(name);
       }
       await this.fetch(FetchMode.STORAGE_LIST);
     } else if(addMode === AddMode.UNIT_LIST) {
       if(this.state.dummy) {
         await this.dummyService.addUnit(name);
       } else {
-        // TODO: Add api call
+        await addUnit(name);
       }
       await this.fetch(FetchMode.UNIT_LIST);
     } else {
@@ -136,30 +145,28 @@ class App extends React.Component {
       if(this.state.dummy) {
         await this.dummyService.deleteItem(deleteId);
       } else {
-        // TODO: Add api call
+        await deleteItem(deleteId);
       }
       await this.fetch(FetchMode.ITEM_LIST);
     } else if(deleteMode === DeleteMode.STORAGE_CONTENT) {
-      const storageId = arguments[2];
-
       if(this.state.dummy) {
-        await this.dummyService.deleteItemFromStorage(deleteId, storageId);
+        await this.dummyService.deleteContent(deleteId);
       } else {
-        // TODO: Add api call
+        await deleteContent(deleteId);
       }
-      await this.fetch(FetchMode.STORAGE_CONTENT, storageId);
+      await this.fetch(FetchMode.STORAGE_CONTENT, this.state.currentStorage.id);
     } else if(deleteMode === DeleteMode.STORAGE_LIST) {
       if(this.state.dummy) {
         await this.dummyService.deleteStorage(deleteId);
       } else {
-        // TODO: Add api call
+        await deleteStorage(deleteId);
       }
       await this.fetch(FetchMode.STORAGE_LIST);
     } else if(deleteMode === DeleteMode.UNIT_LIST) {
       if(this.state.dummy) {
         await this.dummyService.deleteUnit(deleteId);
       } else {
-        // TODO: Add api call
+        await deleteUnit(deleteId);
       }
       await this.fetch(FetchMode.UNIT_LIST);
     } else {
@@ -170,51 +177,46 @@ class App extends React.Component {
   async update(updateMode, updateId, newName) {
     if(updateMode === UpdateMode.ITEM_LIST) {
       if(this.state.dummy) {
-        this.dummyService.updateItem(updateId, newName);
+        await this.dummyService.updateItem(updateId, newName);
       } else {
-        // TODO: Add api call
+        updateNameForItem(updateId, newName);
       }
       await this.fetch(FetchMode.ITEM_LIST);
     } else if(updateMode === UpdateMode.STORAGE_CONTENT_DECR) {
-      const storageId = arguments[2];
-
       if(this.state.dummy) {
-        this.dummyService.decrementQuantityForItemInStorage(updateId, storageId);
+        await this.dummyService.decrementQuantityForContent(updateId);
       } else {
-        // TODO: Add api call
+        await decrementQuantityForContent(updateId);
       }
-      await this.fetch(FetchMode.STORAGE_CONTENT, storageId);
+      await this.fetch(FetchMode.STORAGE_CONTENT, this.state.currentStorage.id);
     } else if(updateMode === UpdateMode.STORAGE_CONTENT_EDIT) {
       const quantity = arguments[2];
-      const storageId = arguments[3];
 
       if(this.state.dummy) {
-        this.dummyService.updateQuantityForItemInStorage(updateId, quantity, storageId);
+        await this.dummyService.updateQuantityForContent(quantity, updateId);
       } else {
-        // TODO: Add api call
+        await updateQuantityForContent(quantity, updateId);
       }
-      await this.fetch(FetchMode.STORAGE_CONTENT, storageId);
+      await this.fetch(FetchMode.STORAGE_CONTENT, this.state.currentStorage.id);
     } else if(updateMode === UpdateMode.STORAGE_CONTENT_INCR) {
-      const storageId = arguments[2];
-
       if(this.state.dummy) {
-        this.dummyService.incrementQuantityForItemInStorage(updateId, storageId);
+        await this.dummyService.incrementQuantityForContent(updateId);
       } else {
-        // TODO: Add api call
+        await incrementQuantityForContent(updateId);
       }
-      await this.fetch(FetchMode.STORAGE_CONTENT, storageId);
+      await this.fetch(FetchMode.STORAGE_CONTENT, this.state.currentStorage.id);
     } else if(updateMode === UpdateMode.STORAGE_LIST) {
       if(this.state.dummy) {
-        this.dummyService.updateStorage(updateId, newName);
+        await this.dummyService.updateStorage(updateId, newName);
       } else {
-        // TODO: Add api call
+        await updateNameForStorage(updateId, newName);
       }
       await this.fetch(FetchMode.STORAGE_LIST);
     } else if(updateMode === UpdateMode.UNIT_LIST) {
       if(this.state.dummy) {
-        this.dummyService.updateUnit(updateId, newName);
+        await this.dummyService.updateUnit(updateId, newName);
       } else {
-        // TODO: Add api call
+        await updateNameForUnit(updateId, newName);
       }
       await this.fetch(FetchMode.UNIT_LIST);
     } else {

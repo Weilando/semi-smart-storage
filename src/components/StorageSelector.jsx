@@ -75,13 +75,11 @@ class StorageSelector extends React.Component {
 
   // rendering
   unpackStorageList() {
-    const keys = [...Array(this.props.storageList.length).keys()]; // Array with keys from 0 to entries.length
-
-    return keys.map((currKey) =>
+    return this.props.storageList.map((currStorage) =>
       <StorageSelectorItem
-        key={this.props.storageList[currKey].id}
-        storage={this.props.storageList[currKey]}
-        active={this.props.currentStorage === this.props.storageList[currKey]}
+        key={currStorage.id}
+        storage={currStorage}
+        active={this.props.currentStorage === currStorage}
         showAction={this.props.switchAction}
         editAction={this.showEditModal}
       />

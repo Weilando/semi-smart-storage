@@ -6,9 +6,14 @@ class DummyService {
     this.storageContents = [];
     this.storageList = DummyStorageList;
     this.unitList = DummyUnitList;
+    this.lastContent = DummyStorageContent[DummyStorageContent.length-1].id;
+    this.lastItem = DummyItemList[DummyItemList.length-1].id;
+    this.lastStorage = DummyStorageList[DummyStorageList.length-1].id;
+    this.lastUnit = DummyUnitList[DummyUnitList.length-1].id;
 
-    for(let i=0; i<this.storageList.length; i++) {
-      this.storageContents.push(DummyStorageContent);
+    this.storageContents.push(DummyStorageContent);
+    for(let i=1; i<this.storageList.length; i++) {
+      this.storageContents.push([]);
     }
 
     this.getAllItems = this.getAllItems.bind(this);
@@ -20,15 +25,15 @@ class DummyService {
     this.addStorage = this.addStorage.bind(this);
     this.addUnit = this.addUnit.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
-    this.deleteItemFromStorage = this.deleteItemFromStorage.bind(this);
+    this.deleteContent = this.deleteContent.bind(this);
     this.deleteStorage = this.deleteStorage.bind(this);
     this.deleteUnit = this.deleteUnit.bind(this);
     this.updateItem = this.updateItem.bind(this);
     this.updateStorage = this.updateStorage.bind(this);
     this.updateUnit = this.updateUnit.bind(this);
-    this.updateQuantityForItemInStorage = this.updateQuantityForItemInStorage.bind(this);
-    this.decrementQuantityForItemInStorage = this.decrementQuantityForItemInStorage.bind(this);
-    this.incrementQuantityForItemInStorage = this.incrementQuantityForItemInStorage.bind(this);
+    this.updateQuantityForContent = this.updateQuantityForContent.bind(this);
+    this.decrementQuantityForContent = this.decrementQuantityForContent.bind(this);
+    this.incrementQuantityForContent = this.incrementQuantityForContent.bind(this);
   }
 
   getAllItems() {
@@ -54,7 +59,7 @@ class DummyService {
 
   addItem(name) {
     console.log('Add new item: '.concat(name));
-    this.itemList.push({id: this.itemList[this.itemList.length-1].id+1, name: name});
+    this.itemList.push({id: ++this.lastItem, name: name});
   }
 
   addItemToStorage(itemId, unitId, quantity, storageId) {
@@ -63,26 +68,26 @@ class DummyService {
     const corrStoInd = this.storageList.findIndex(x => x.id === storageId);
     const currSto = this.storageContents[corrStoInd].slice();
 
-    const newItem = {
-      id: currSto[currSto.length-1].id+1,
+    const newContent = {
+      id: ++this.lastContent,
       name: this.itemList.find(x => x.id === itemId).name,
       unit: this.unitList.find(x => x.id === unitId).name,
       quantity: quantity
     };
 
-    currSto.push(newItem);
+    currSto.push(newContent);
     this.storageContents[corrStoInd] = currSto;
   }
 
   addStorage(name) {
     console.log('Add new storage: '.concat(name));
-    this.storageList.push({id: this.storageList[this.storageList.length-1].id+1, name: name});
+    this.storageList.push({id: ++this.lastStorage, name: name});
     this.storageContents.push([]);
   }
 
   addUnit(name) {
     console.log('Add new unit: '.concat(name));
-    this.unitList.push({id: this.unitList[this.unitList.length-1].id+1, name: name});
+    this.unitList.push({id: ++this.lastUnit, name: name});
   }
 
   deleteItem(deleteId) {
@@ -91,14 +96,18 @@ class DummyService {
     this.itemList.splice(deletedIndex, 1);
   }
 
-  deleteItemFromStorage(deleteId, storageId) {
-    console.log('Delete item #'.concat(deleteId, ' from storage #', storageId, '.'));
-    const currStoInd = this.storageList.findIndex(x => x.id === storageId);
-    const currSto = this.storageContents[currStoInd].slice();
+  deleteContent(deleteId) {
+    console.log('Delete content: #'.concat(deleteId));
 
-    const deletedIndex = currSto.findIndex(x => x.id === deleteId);
-    currSto.splice(deletedIndex, 1);
-    this.storageContents[currStoInd] = currSto;
+    for(let i=0; i<this.storageContents.length; i++) {
+      const currSto = this.storageContents[i].slice();
+      const deletedIndex = currSto.findIndex(x => x.id === deleteId);
+      if(deletedIndex !== -1) {
+        currSto.splice(deletedIndex, 1);
+        this.storageContents[i] = currSto;
+        return;
+      }
+    }
   }
 
   deleteStorage(deleteId) {
@@ -136,24 +145,46 @@ class DummyService {
     this.storageContents[currStoInd] = currSto;
   }
 
-  incrementQuantityForItemInStorage(updateId, storageId) {
-    console.log('Increment quantity for item #'.concat(updateId, ' from storage #', storageId, '.'));
-    const currStoInd = this.storageList.findIndex(x => x.id === storageId);
-    const currSto = this.storageContents[currStoInd].slice();
+  updateQuantityForContent(quantity, updateId) {
+    console.log('Update quantity for content #'.concat(updateId, ' to', quantity, '.'));
 
-    const updatedIndex = currSto.findIndex(x => x.id === updateId);
-    currSto[updatedIndex].quantity++;
-    this.storageContents[currStoInd] = currSto;
+    for(let i=0; i<this.storageContents.length; i++) {
+      const currSto = this.storageContents[i].slice();
+      const updatedIndex = currSto.findIndex(x => x.id === updateId);
+      if(updatedIndex !== -1) {
+        currSto[updatedIndex].quantity = quantity;
+        this.storageContents[i] = currSto;
+        return;
+      }
+    }
   }
 
-  decrementQuantityForItemInStorage(updateId, storageId) {
-    console.log('Increment quantity for item #'.concat(updateId, ' from storage #', storageId, '.'));
-    const currStoInd = this.storageList.findIndex(x => x.id === storageId);
-    const currSto = this.storageContents[currStoInd].slice();
+  incrementQuantityForContent(updateId) {
+    console.log('Increment quantity for item #'.concat(updateId, '.'));
 
-    const updatedIndex = currSto.findIndex(x => x.id === updateId);
-    currSto[updatedIndex].quantity--;
-    this.storageContents[currStoInd] = currSto;
+    for(let i=0; i<this.storageContents.length; i++) {
+      const currSto = this.storageContents[i].slice();
+      const updatedIndex = currSto.findIndex(x => x.id === updateId);
+      if(updatedIndex !== -1) {
+        currSto[updatedIndex].quantity++;
+        this.storageContents[i] = currSto;
+        return;
+      }
+    }
+  }
+
+  decrementQuantityForContent(updateId) {
+    console.log('Decrement quantity for item #'.concat(updateId, '.'));
+
+    for(let i=0; i<this.storageContents.length; i++) {
+      const currSto = this.storageContents[i].slice();
+      const updatedIndex = currSto.findIndex(x => x.id === updateId);
+      if(updatedIndex !== -1) {
+        currSto[updatedIndex].quantity--;
+        this.storageContents[i] = currSto;
+        return;
+      }
+    }
   }
 
   updateUnit(updateId, newName) {

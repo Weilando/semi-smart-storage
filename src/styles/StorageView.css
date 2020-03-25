@@ -41,3 +41,11 @@ button.StorageView {
   border-style: none;
   background-color: white;
 }
+
+option.choose {
+  background-color: grey;
+}
+
+select.choose {
+  background-color: grey;
+}

@@ -6,12 +6,10 @@ import { ModalMode } from '../constants/enums';
 import '../styles/Modal.css';
 
 function unpackList(list, editAction) {
-  const keys = [...Array(list.length).keys()]; // Array with keys from 0 to entries.length
-
-  return keys.map((currKey) =>
+  return list.map((currEntry) =>
     <ModalListItem
-      key={list[currKey].id}
-      obj={list[currKey]}
+      key={currEntry.id}
+      obj={currEntry}
       editAction={editAction}
     />
   );

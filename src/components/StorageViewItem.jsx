@@ -9,7 +9,6 @@ function StorageViewItem(props) {
     iName: PropTypes.string.isRequired,
     iUnit: PropTypes.string.isRequired,
     iQuantity: PropTypes.number.isRequired,
-    storageId: PropTypes.number.isRequired,
     deleteAction: PropTypes.func.isRequired,
     editAction: PropTypes.func.isRequired,
     updateAction: PropTypes.func.isRequired,
@@ -23,13 +22,13 @@ function StorageViewItem(props) {
       <td>
         <button className="StorageView"
           disabled={props.iQuantity < 1}
-          onClick={() => props.updateAction(UpdateMode.STORAGE_CONTENT_DECR, props.iId, props.storageId)}
+          onClick={() => props.updateAction(UpdateMode.STORAGE_CONTENT_DECR, props.iId)}
         >-</button>
         <button className="StorageView"
-          onClick={() => props.updateAction(UpdateMode.STORAGE_CONTENT_INCR, props.iId, props.storageId)}
+          onClick={() => props.updateAction(UpdateMode.STORAGE_CONTENT_INCR, props.iId)}
         >+</button>
         <button className="StorageView" onClick={() => props.editAction(props.iId, props.iQuantity)}>Edit</button>
-        <button className="StorageView" onClick={() => props.deleteAction(DeleteMode.STORAGE_CONTENT, props.iId, props.storageId)}>Remove</button>
+        <button className="StorageView" onClick={() => props.deleteAction(DeleteMode.STORAGE_CONTENT, props.iId)}>Remove</button>
       </td>
     </tr>
   );

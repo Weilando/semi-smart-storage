@@ -243,7 +243,14 @@ exports[`snapshot tests for Body component should render Body component correctl
               id="Item"
               name="Item"
               onChange={[Function]}
+              value={-1}
             >
+              <option
+                className="choose"
+                value={-1}
+              >
+                -Choose item-
+              </option>
               <option
                 value={0}
               >
@@ -266,7 +273,14 @@ exports[`snapshot tests for Body component should render Body component correctl
               id="Unit"
               name="Unit"
               onChange={[Function]}
+              value={-1}
             >
+              <option
+                className="choose"
+                value={-1}
+              >
+                -Choose unit-
+              </option>
               <option
                 value={0}
               >
@@ -298,7 +312,7 @@ exports[`snapshot tests for Body component should render Body component correctl
                 value={0}
               />
               <input
-                disabled={false}
+                disabled={true}
                 type="submit"
                 value="Add"
               />
