@@ -2,13 +2,12 @@
   "name": "semi-smart-storage",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/SemiSmartStorage",
   "dependencies": {
     "axios": "^0.19.2",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-redux": "^7.1.3",
-    "react-scripts": "^3.3.1",
-    "redux": "^4.0.5"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,8 +31,7 @@
     ]
   },
   "devDependencies": {
-    "babel-jest": "^24.7.1",
     "eslint-utils": "^1.4.2",
-    "react-test-renderer": "^16.9.0"
+    "react-test-renderer": "^16.13.1"
   }
 }
