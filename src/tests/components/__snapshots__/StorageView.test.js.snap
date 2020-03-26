@@ -116,7 +116,14 @@ exports[`snapshot tests for StorageView component should render StorageView comp
             id="Item"
             name="Item"
             onChange={[Function]}
+            value={-1}
           >
+            <option
+              className="choose"
+              value={-1}
+            >
+              -Choose item-
+            </option>
             <option
               value={0}
             >
@@ -139,7 +146,14 @@ exports[`snapshot tests for StorageView component should render StorageView comp
             id="Unit"
             name="Unit"
             onChange={[Function]}
+            value={-1}
           >
+            <option
+              className="choose"
+              value={-1}
+            >
+              -Choose unit-
+            </option>
             <option
               value={0}
             >
@@ -171,7 +185,7 @@ exports[`snapshot tests for StorageView component should render StorageView comp
               value={0}
             />
             <input
-              disabled={false}
+              disabled={true}
               type="submit"
               value="Add"
             />
@@ -257,14 +271,30 @@ exports[`snapshot tests for StorageView component should render empty StorageVie
             id="Item"
             name="Item"
             onChange={[Function]}
-          />
+            value={-1}
+          >
+            <option
+              className="choose"
+              value={-1}
+            >
+              -Choose item-
+            </option>
+          </select>
         </td>
         <td>
           <select
             id="Unit"
             name="Unit"
             onChange={[Function]}
-          />
+            value={-1}
+          >
+            <option
+              className="choose"
+              value={-1}
+            >
+              -Choose unit-
+            </option>
+          </select>
         </td>
         <td
           colSpan="2"
@@ -280,7 +310,7 @@ exports[`snapshot tests for StorageView component should render empty StorageVie
               value={0}
             />
             <input
-              disabled={false}
+              disabled={true}
               type="submit"
               value="Add"
             />
@@ -444,7 +474,14 @@ exports[`snapshot tests for StorageViewNewItem component should render StorageVi
         id="Item"
         name="Item"
         onChange={[Function]}
+        value={-1}
       >
+        <option
+          className="choose"
+          value={-1}
+        >
+          -Choose item-
+        </option>
         <option
           value={0}
         >
@@ -467,7 +504,14 @@ exports[`snapshot tests for StorageViewNewItem component should render StorageVi
         id="Unit"
         name="Unit"
         onChange={[Function]}
+        value={-1}
       >
+        <option
+          className="choose"
+          value={-1}
+        >
+          -Choose unit-
+        </option>
         <option
           value={0}
         >
@@ -499,7 +543,7 @@ exports[`snapshot tests for StorageViewNewItem component should render StorageVi
           value={0}
         />
         <input
-          disabled={false}
+          disabled={true}
           type="submit"
           value="Add"
         />
@@ -517,14 +561,30 @@ exports[`snapshot tests for StorageViewNewItem component should render empty Sto
         id="Item"
         name="Item"
         onChange={[Function]}
-      />
+        value={-1}
+      >
+        <option
+          className="choose"
+          value={-1}
+        >
+          -Choose item-
+        </option>
+      </select>
     </td>
     <td>
       <select
         id="Unit"
         name="Unit"
         onChange={[Function]}
-      />
+        value={-1}
+      >
+        <option
+          className="choose"
+          value={-1}
+        >
+          -Choose unit-
+        </option>
+      </select>
     </td>
     <td
       colSpan="2"
@@ -540,7 +600,7 @@ exports[`snapshot tests for StorageViewNewItem component should render empty Sto
           value={0}
         />
         <input
-          disabled={false}
+          disabled={true}
           type="submit"
           value="Add"
         />

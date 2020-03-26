@@ -72,7 +72,7 @@ class StorageView extends React.Component {
   handleUpdate(event) {
     event.preventDefault();
     if(this.state.editBuffer !== this.state.editQuantity) {
-      this.props.updateAction(UpdateMode.STORAGE_CONTENT_EDIT, this.state.editId, this.state.editBuffer, this.props.storage.id);
+      this.props.updateAction(UpdateMode.STORAGE_CONTENT_EDIT, this.state.editId, this.state.editBuffer);
     }
     this.closeEditQuantityModal();
   }
@@ -80,16 +80,13 @@ class StorageView extends React.Component {
 
   // rendering
   unpackStorageContent() {
-    const keys = [...Array(this.props.storageContent.length).keys()]; // Array with keys from 0 to entries.length
-
-    return keys.map((currKey) =>
+    return this.props.storageContent.map((currContent) =>
       <StorageViewItem
-        key={this.props.storageContent[currKey].id}
-        iId={this.props.storageContent[currKey].id}
-        iName={this.props.storageContent[currKey].name}
-        iUnit={this.props.storageContent[currKey].unit}
-        iQuantity={this.props.storageContent[currKey].quantity}
-        storageId={this.props.storage.id}
+        key={currContent.id}
+        iId={currContent.id}
+        iName={currContent.name}
+        iUnit={currContent.unit}
+        iQuantity={currContent.quantity}
         deleteAction={this.props.deleteAction}
         editAction={this.showEditQuantityModal}
         updateAction={this.props.updateAction}

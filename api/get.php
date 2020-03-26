@@ -1,48 +1,54 @@
 <?php
+  include 'tools.php';
+
   // Allow every kind of request, as curent scope is a local network.
-  // TODO:  Reduce privileges later!
   header('Access-Control-Allow-Origin: *');
-  header('Access-Control-Allow-Methods: GET, POST, OPTIONS, DELETE, PUT');
+  header('Access-Control-Allow-Methods: GET');
   header('Access-Control-Allow-Headers: Host, Connection, Accept, Authorization, Content-Type, X-Requested-With, User-Agent, Referer, Methods');
   if($_SERVER["REQUEST_METHOD"]== "OPTIONS"){
-    echo "";die;
+    die("");
   }
 
-  $db = new SQLite3('../databases/db_3S.db');
-  if(!$db) {
-    echo $db->lastErrorMsg();
-  }
-
-  $content = $_GET['content'];
-  $option = $_GET['option'];
-  $type = $_GET['type'];
+  $content = $_GET['content'];  // return-format
+  $type = $_GET['type'];        // delete-action-type parameter
 
   switch ($type) {
-    case "ALL_STORAGES":
-      $sql =<<<EOF
-        SELECT * from Storage;
-      EOF;
-      break;
     case "ALL_ITEMS":
       $sql =<<<EOF
         SELECT * from Item;
       EOF;
       break;
-    case "ALL_ITEMS_IN_STORAGE":
+    case "ALL_STORAGES":
       $sql =<<<EOF
-        SELECT Item.id, Item.name, Unit.name as unit, isIn.quantity from Item, isIn, Storage, Unit WHERE Item.id==isIn.itemId AND isIn.storageId==Storage.id AND Item.unitId==Unit.id AND isIn.storageID==$option;
+        SELECT * from Storage;
       EOF;
       break;
     case "ALL_UNITS":
-    default:
       $sql =<<<EOF
         SELECT * from Unit;
+        EOF;
+        break;
+    case "CONTENT_IN_STORAGE":
+      $storageId = getIntParameter('storageId');
+      $sql =<<<EOF
+        SELECT Content.id, Item.name AS name, Unit.name AS unit, Content.quantity FROM Content JOIN Item JOIN Unit ON Item.id=Content.itemId AND Unit.id=Content.unitId WHERE Content.storageId=$storageId;
       EOF;
+      break;
+    default:
+      dieBecause(400, 'Invalid request-type.');
   }
 
+  // connect to database
+  $db = new SQLite3(getDatabaseRelativePath());
+  if(!$db) {
+    dieBecause(500, $db->lastErrorMsg());
+  }
+
+  // execute query
   $ret = $db->query($sql);
 
-  if ($content == 'json') {
+  // pack fetched data
+  if (strtolower($content) == 'json') {
     $data = array();
     while($row = $ret->fetchArray(SQLITE3_ASSOC)) {
       array_push($data, $row);
@@ -67,5 +73,7 @@
     }
   }
 
+  // close connection to database
   $db->close();
+  http_response_code(200);
 ?>

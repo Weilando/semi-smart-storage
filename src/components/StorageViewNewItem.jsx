@@ -8,8 +8,8 @@ class StorageViewNewItem extends React.Component {
     super(props);
 
     this.state = {
-      item: 0,
-      unit: 0,
+      item: -1,
+      unit: -1,
       quantity: 0,
     }
 
@@ -51,32 +51,22 @@ class StorageViewNewItem extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.addAction(AddMode.STORAGE_CONTENT, this.state.item, this.state.unit, this.state.quantity, this.props.storageId);
-    this.setState({item: 0, unit: 0, quantity: 0});
+    this.setState({item: -1, unit: -1, quantity: 0});
   }
 
   // rendering
   unpackItemList() {
-    const keys = [...Array(this.props.itemList.length).keys()]; // Array with keys from 0 to entries.length
-
-    return keys.map((currKey) =>
-      <option
-        key={this.props.itemList[currKey].id}
-        value={this.props.itemList[currKey].id}
-      >
-        {this.props.itemList[currKey].name}
+    return this.props.itemList.map((currItem) =>
+      <option key={currItem.id} value={currItem.id}>
+        {currItem.name}
       </option>
     );
   }
 
   unpackUnitList() {
-    const keys = [...Array(this.props.unitList.length).keys()]; // Array with keys from 0 to entries.length
-
-    return keys.map((currKey) =>
-      <option
-        key={this.props.unitList[currKey].id}
-        value={this.props.unitList[currKey].id}
-      >
-        {this.props.unitList[currKey].name}
+    return this.props.unitList.map((currUnit) =>
+      <option key={currUnit.id} value={currUnit.id}>
+        {currUnit.name}
       </option>
     );
   }
@@ -89,12 +79,14 @@ class StorageViewNewItem extends React.Component {
       <tfoot>
         <tr>
           <td>
-            <select id="Item" name="Item" onChange={this.handleItemChange}>
+            <select id="Item" name="Item" onChange={this.handleItemChange} value={this.state.item}>
+              <option className="choose" value={-1}>-Choose item-</option>
               {itemOptions}
             </select>
           </td>
           <td>
-            <select id="Unit" name="Unit" onChange={this.handleUnitChange}>
+            <select id="Unit" name="Unit" onChange={this.handleUnitChange} value={this.state.unit}>
+              <option className="choose" value={-1}>-Choose unit-</option>
               {unitOptions}
             </select>
           </td>
@@ -106,7 +98,7 @@ class StorageViewNewItem extends React.Component {
                 onChange={this.handleQuantityChange}
               />
               <input type="submit" value="Add"
-                disabled={this.state.quantity === ''}
+                disabled={(this.state.quantity === '') || (this.state.item===-1) || (this.state.unit===-1)}
               />
             </form>
           </td>
