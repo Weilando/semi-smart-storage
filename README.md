@@ -1,11 +1,54 @@
 # SemiSmartStorage
 This little React App helps you to keep track of your fridges and storages.
+The lightweight backend is written in PHP 7 and only requires a Raspberry Pi with an Apache 2 server and an SQLite 3 database.
+
 Further information can be found in the [documentation](docs/Documentation.md).
 The project's progress can be seen in the [roadmap](docs/Roadmap.md).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Thanks to Dan, who gift me a Raspberry Pi, which made me come up with this project!
 
-## Available Scripts
+## Features
+- Create virtual storages to save content, i.e. item, unit and quantity
+- Use predefined items and units to keep lists consistent
+- Host and sync the whole app with one Raspberry Pi
+
+## Installation
+It is assumed that both backend and frontend are installed at the server's document-root (typically `/var/www/html`, look at [documentation](docs/Documentation.md)´s last paragraph for settings with different locations).
+After installation there are three new directories at document-root: `/api`, `/database` and `/SemiSmartStorage`.
+
+### Backend
+Once an Apache2-server is set up on your Raspberry Pi, you can simply copy the directories `./api` and `./database` into your document-root.
+Then change into `/database` and run
+```
+sh setup-database.sh
+```
+
+The script creates the SQLite3-database _db_3S.db_ and all necessary tables, and inserts some initial data.
+
+### Frontend (installation on Raspberry Pi)
+Change into the project-directory and run
+```
+npm i
+npm run build
+```
+
+These commands install all dependencies and create a production build, which you can serve with the Apache server.
+It is assumed it will be hosted in a directory `/SemiSmartStorage` at the server's document-root.
+Otherwise the homepage-field in package.json can be modified to the correct location.
+
+Simply upload `./build` to your Raspberry Pi and rename it `./SemiSmartStorage`.
+If you use the standard-configuration, the app is available under [http://raspberrypi/SemiSmartStorage/][http://raspberrypi/SemiSmartStorage/] now.
+
+### Frontend (development mode)
+Change into the project-directory and run
+```
+npm i
+npm run
+```
+
+These commands install all dependencies, create a development build and start a development server.
+
+## Available Scripts (development mode)
 In the project directory, you can run:
 
 ### `npm start`
@@ -29,8 +72,4 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## Learn More
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
 Further information has been moved to [docs/React-information.md].
