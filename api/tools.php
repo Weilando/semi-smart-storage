@@ -1,4 +1,8 @@
 <?php
+  function getDatabaseRelativePath() {
+    return "../database/db_3S.db";
+  }
+
   function dieBecause(int $code, string $message) {
     http_response_code($code);
     die($message);

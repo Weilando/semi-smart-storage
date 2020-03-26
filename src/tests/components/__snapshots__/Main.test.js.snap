@@ -605,6 +605,16 @@ exports[`snapshot tests for Header component should render Header component corr
         Settings
       </h1>
       <h2>
+        Information
+      </h2>
+      <p>
+        Currently the backend-url is 
+        <i>
+          http://raspberrypi/api/
+        </i>
+        . It can only be changed during development.
+      </p>
+      <h2>
         Click-dummy
       </h2>
       <p>

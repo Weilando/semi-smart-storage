@@ -45,7 +45,7 @@
   }
 
   // connect to database
-  $db = new SQLite3('../databases/db_3S.db');
+  $db = new SQLite3(getDatabaseRelativePath());
   if(!$db) {
     dieBecause(500, $db->lastErrorMsg());
   }

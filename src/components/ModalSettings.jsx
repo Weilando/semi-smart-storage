@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { BASEURL } from '../constants/urlConstants';
 import '../styles/Modal.css';
 
 function ModalSettings(props) {
@@ -15,6 +16,9 @@ function ModalSettings(props) {
       <div className="modal-main">
         <span className="close" onClick={props.closeAction}>&times;</span>
         <h1>Settings</h1>
+        <h2>Information</h2>
+        <p>Currently the backend-url is <i>{BASEURL}</i>.
+          It can only be changed during development.</p>
 
         <h2>Click-dummy</h2>
         <p>This option enables fake-data to showcase the UI.
