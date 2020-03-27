@@ -37,7 +37,7 @@ It is assumed it will be hosted in a directory `/SemiSmartStorage` at the server
 Otherwise the homepage-field in package.json can be modified to the correct location.
 
 Simply upload `./build` to your Raspberry Pi and rename it `./SemiSmartStorage`.
-If you use the standard-configuration, the app is available under [http://raspberrypi/SemiSmartStorage/][http://raspberrypi/SemiSmartStorage/] now.
+If you use the standard-configuration, the app is available under [http://raspberrypi/SemiSmartStorage/](http://raspberrypi/SemiSmartStorage/) now.
 
 ### Frontend (development mode)
 Change into the project-directory and run
@@ -72,4 +72,4 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## Learn More
-Further information has been moved to [docs/React-information.md].
+Further information has been moved to [React-information](docs/React-information.md).
