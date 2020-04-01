@@ -139,7 +139,7 @@ exports[`snapshot tests for Body component should render Body component correctl
           <th
             width="50%"
           >
-            Name
+            Item
           </th>
           <th
             width="20%"

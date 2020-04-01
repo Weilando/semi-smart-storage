@@ -32,7 +32,8 @@ class StorageView extends React.Component {
     storageContent: PropTypes.arrayOf(
       PropTypes.shape(
         {id: PropTypes.number.isRequired,
-          name: PropTypes.string.isRequired,
+          item: PropTypes.string.isRequired,
+          unit: PropTypes.string.isRequired,
           quantity: PropTypes.number.isRequired
         }
       )
@@ -84,7 +85,7 @@ class StorageView extends React.Component {
       <StorageViewItem
         key={currContent.id}
         iId={currContent.id}
-        iName={currContent.name}
+        iItem={currContent.item}
         iUnit={currContent.unit}
         iQuantity={currContent.quantity}
         deleteAction={this.props.deleteAction}

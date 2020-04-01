@@ -6,7 +6,7 @@ import '../styles/StorageView.css';
 function StorageViewItem(props) {
   StorageViewItem.propTypes = {
     iId: PropTypes.number.isRequired,
-    iName: PropTypes.string.isRequired,
+    iItem: PropTypes.string.isRequired,
     iUnit: PropTypes.string.isRequired,
     iQuantity: PropTypes.number.isRequired,
     deleteAction: PropTypes.func.isRequired,
@@ -16,7 +16,7 @@ function StorageViewItem(props) {
 
   return(
     <tr>
-      <td>{props.iName}</td>
+      <td>{props.iItem}</td>
       <td>{props.iUnit}</td>
       <td>{props.iQuantity}</td>
       <td>

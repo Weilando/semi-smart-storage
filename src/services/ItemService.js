@@ -21,9 +21,8 @@ async function getAllItems() {
     return data;
   } catch (e) {
     console.log("An error occured while fetching item-list.");
+    return [];
   }
-
-  return [];
 }
 
 async function updateNameForItem(id, name) {

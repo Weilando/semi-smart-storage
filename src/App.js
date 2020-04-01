@@ -72,7 +72,7 @@ class App extends React.Component {
     } else if(fetchMode === FetchMode.STORAGE_CONTENT) {
       const storageId = arguments[1];
       if(this.state.dummy) {
-        await this.setState({currentStorageContent: this.dummyService.getAllItemsInStorage(storageId)});
+        await this.setState({currentStorageContent: this.dummyService.getContentInStorage(storageId)});
       } else {
         await getContentInStorage(storageId).then(content => {
           this.setState((prevState, props) => ({currentStorageContent: content}))
@@ -116,7 +116,7 @@ class App extends React.Component {
       const storageId = arguments[4];
 
       if(this.state.dummy) {
-        await this.dummyService.addItemToStorage(itemId, unitId, quantity, storageId);
+        await this.dummyService.addContent(itemId, unitId, quantity, storageId);
       } else {
         await addContent(itemId, unitId, quantity, storageId);
       }

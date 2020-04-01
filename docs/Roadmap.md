@@ -62,6 +62,7 @@
 
 ## Ideas
 - [ ] Load-animations
+- [ ] Show alerts if api-operations or internet-connection fail and switch to click-dummy
 - [ ] Support of mobile-devices
 - [ ] Several themes
 - [ ] Reset button (restore factory settings)

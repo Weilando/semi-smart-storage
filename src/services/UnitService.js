@@ -21,9 +21,8 @@ async function getAllUnits() {
     return data;
   } catch (e) {
     console.log("An error occured while fetching unit-list.");
+    return [];
   }
-
-  return [];
 }
 
 async function updateNameForUnit(id, name) {

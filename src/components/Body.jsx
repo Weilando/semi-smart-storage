@@ -12,7 +12,8 @@ function Body(props) {
     currentStorageContent: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
+        item: PropTypes.string.isRequired,
+        unit: PropTypes.string.isRequired,
         quantity: PropTypes.number.isRequired
       }).isRequired
     ).isRequired,

@@ -26,9 +26,8 @@ async function getContentInStorage(storageId) {
     return data;
   } catch (e) {
     console.log("An error occured while fetching item-list for storage #".concat(storageId, ":\n", e));
+    return [];
   }
-
-  return [];
 }
 
 async function incrementQuantityForContent(contentId) {
