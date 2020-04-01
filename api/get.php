@@ -31,7 +31,7 @@
     case "CONTENT_IN_STORAGE":
       $storageId = getIntParameter('storageId');
       $sql =<<<EOF
-        SELECT Content.id, Item.name AS name, Unit.name AS unit, Content.quantity FROM Content JOIN Item JOIN Unit ON Item.id=Content.itemId AND Unit.id=Content.unitId WHERE Content.storageId=$storageId;
+        SELECT Content.id, Item.name AS item, Unit.name AS unit, Content.quantity FROM Content JOIN Item JOIN Unit ON Item.id=Content.itemId AND Unit.id=Content.unitId WHERE Content.storageId=$storageId;
       EOF;
       break;
     default:

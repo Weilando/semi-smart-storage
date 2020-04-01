@@ -70,7 +70,7 @@ describe('snapshot tests for StorageViewItem component', () => {
     const tree = renderer.create(
       <StorageViewItem
         iId={42}
-        iName="Milk"
+        iItem="Milk"
         iUnit="1L"
         iQuantity={2.5}
         deleteAction={deleteAction}
@@ -91,7 +91,7 @@ describe('snapshot tests for StorageViewItem component', () => {
     const tree = renderer.create(
       <StorageViewItem
         iId={42}
-        iName="Milk"
+        iItem="Milk"
         iUnit="1L"
         iQuantity={0.9}
         deleteAction={deleteAction}

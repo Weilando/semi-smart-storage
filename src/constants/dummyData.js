@@ -13,16 +13,16 @@ const DummyItemListShort = [
 ];
 
 const DummyStorageContent = [
-  {id: 0, name: "Milk", unit: "1L", quantity: 2.7},
-  {id: 1, name: "Coke", unit: "0.33L", quantity: 5},
-  {id: 2, name: "Apple juice", unit: "0.5L", quantity: 2},
-  {id: 4, name: "Craft Beer", unit: "0.33L", quantity: 6},
-  {id: 5, name: "Sparkling water", unit: "0.75L", quantity: 21}
+  {id: 0, item: "Milk", unit: "1L", quantity: 2.7},
+  {id: 1, item: "Coke", unit: "0.33L", quantity: 5},
+  {id: 2, item: "Apple juice", unit: "0.5L", quantity: 2},
+  {id: 4, item: "Craft Beer", unit: "0.33L", quantity: 6},
+  {id: 5, item: "Sparkling water", unit: "0.75L", quantity: 21}
 ];
 
 const DummyStorageContentShort = [
-  {id: 0, name: "Milk", unit: "1L", quantity: 2.7},
-  {id: 2, name: "Sparkling water", unit: "0.75L", quantity: 21}
+  {id: 0, item: "Milk", unit: "1L", quantity: 2.7},
+  {id: 2, item: "Sparkling water", unit: "0.75L", quantity: 21}
 ];
 
 const DummyStorageList = [
