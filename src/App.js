@@ -179,7 +179,7 @@ class App extends React.Component {
       if(this.state.dummy) {
         await this.dummyService.updateItem(updateId, newName);
       } else {
-        updateNameForItem(updateId, newName);
+        await updateNameForItem(updateId, newName);
       }
       await this.fetch(FetchMode.ITEM_LIST);
     } else if(updateMode === UpdateMode.STORAGE_CONTENT_DECR) {

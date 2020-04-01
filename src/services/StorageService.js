@@ -16,14 +16,13 @@ async function getAllStorages() {
     const { data } = await APIConnector.get(GET, {params: {type: "ALL_STORAGES", content: "json"}});
 
     if(data === null) {
-      return [];
+      return [{id: -1, name: ""}];
     }
     return data;
   } catch (e) {
     console.log("An error occured while fetching storage-list.");
+    return [{id: -1, name: ""}];
   }
-
-  return [];
 }
 
 async function updateNameForStorage(id, name) {
